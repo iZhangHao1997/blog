@@ -16,7 +16,7 @@ hero:
 
 features:
   - title: JavaScript
-    details: JS test
+    details: JS
   - title: Vue
     details: Vue2/Vue3
   - title: HTML
