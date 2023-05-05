@@ -16,7 +16,7 @@ hero:
 
 features:
   - title: JavaScript
-    details: 前端还有比JS更重要的吗
+    details: JS
   - title: Vue
     details: Vue2/Vue3
   - title: HTML
