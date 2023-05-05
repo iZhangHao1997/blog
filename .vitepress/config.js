@@ -2,7 +2,7 @@ import { defineConfig } from "vitepress";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  base: "/bug-bytes/",
+  base: "/blog/",
   srcDir: "src",
   title: "BugBytes",
   description: "A FE blog",
