@@ -18,6 +18,7 @@ export default defineConfig({
       { text: "CSS", link: "/css/" },
       { text: "Sass", link: "/sass/" },
       { text: "Browser", link: "/browser/" },
+      { text: "HTTP", link: "/HTTP/" },
     ],
 
     sidebar: {
