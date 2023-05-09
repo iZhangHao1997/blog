@@ -36,6 +36,16 @@ export default defineConfig({
           items: [{ text: "基础", link: "/css/" }],
         },
       ],
+
+      "/vue/": [
+        {
+          text: "Vue",
+          items: [
+            { text: "vue2", link: "/vue/vue2" },
+            { text: "vue3", link: "/vue/vue3" },
+          ],
+        },
+      ],
     },
 
     socialLinks: [
