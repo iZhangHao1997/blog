@@ -8,17 +8,21 @@ export default defineConfig({
   description: "A FE blog",
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
+    outline: [2, 3],
+
     nav: [
       { text: "Home", link: "/" },
-      { text: "Examples", link: "/markdown-examples" },
+      { text: "JavaScript", link: "/javascript/" },
+      { text: "Vue", link: "/vue/" },
     ],
 
     sidebar: [
       {
-        text: "Examples",
+        text: "Javascript",
         items: [
-          { text: "Markdown Examples", link: "/markdown-examples" },
-          { text: "Runtime API Examples", link: "/api-examples" },
+          { text: "Javascript 高频问答", link: "/javascript/" },
+          { text: "Javascript ES6标准", link: "/javascript/es6" },
+          { text: "Javascript 编程题", link: "/javascript/code" },
         ],
       },
     ],
