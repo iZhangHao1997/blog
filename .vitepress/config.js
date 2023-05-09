@@ -16,6 +16,8 @@ export default defineConfig({
       { text: "Vue", link: "/vue/" },
       { text: "HTML", link: "/html/" },
       { text: "CSS", link: "/css/" },
+      { text: "Sass", link: "/sass/" },
+      { text: "Browser", link: "/browser/" },
     ],
 
     sidebar: {

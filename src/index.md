@@ -31,7 +31,7 @@ features:
     link: /sass/
   - title: Browser
     details: 游览器
-    link: /browswe/
+    link: /browser/
   - title: Computer
     details: 计算机基础
     link: /computer/
