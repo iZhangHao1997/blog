@@ -46,6 +46,13 @@ export default defineConfig({
           ],
         },
       ],
+
+      "/html/": [
+        {
+          text: "HTML",
+          items: [{ text: "HTML高频问答", link: "/html/" }],
+        },
+      ],
     },
 
     socialLinks: [
