@@ -6,6 +6,8 @@ export default defineConfig({
   srcDir: "src",
   title: "BugBytes",
   description: "A FE blog",
+  lang: "zh",
+  lastUpdated: true,
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     outline: [2, 3],
@@ -61,5 +63,10 @@ export default defineConfig({
     socialLinks: [
       { icon: "github", link: "https://github.com/vuejs/vitepress" },
     ],
+
+    editLink: {
+      pattern: "https://github.com/iZhangHao1997/blog/edit/main/src/:path",
+      text: "Edit this page on GitHub",
+    },
   },
 });
