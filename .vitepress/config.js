@@ -11,16 +11,16 @@ export default defineConfig({
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     outline: [2, 3],
-
+    logo: "/icons/blog.svg",
     nav: [
       { text: "Home", link: "/" },
-      { text: "JavaScript", link: "/javascript/" },
-      { text: "Vue", link: "/vue/" },
-      { text: "HTML", link: "/html/" },
-      { text: "CSS", link: "/css/" },
-      { text: "Sass", link: "/sass/" },
-      { text: "Browser", link: "/browser/" },
-      { text: "HTTP", link: "/HTTP/" },
+      { text: "JavaScript", link: "/javascript/", activeMatch: "/javascript/" },
+      { text: "Vue", link: "/vue/", activeMatch: "/vue/" },
+      { text: "HTML", link: "/html/", activeMatch: "/html/" },
+      { text: "CSS", link: "/css/", activeMatch: "/css/" },
+      { text: "Sass", link: "/sass/", activeMatch: "/sass/" },
+      { text: "Browser", link: "/browser/", activeMatch: "/browser/" },
+      { text: "HTTP", link: "/http/", activeMatch: "/http/" },
     ],
 
     sidebar: {
@@ -61,7 +61,7 @@ export default defineConfig({
     },
 
     socialLinks: [
-      { icon: "github", link: "https://github.com/vuejs/vitepress" },
+      { icon: "github", link: "https://github.com/iZhangHao1997/blog" },
     ],
 
     editLink: {
