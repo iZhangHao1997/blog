@@ -10,35 +10,51 @@ hero:
     - theme: brand
       text: Documentation
       link: /javascript/
-    - theme: alt
-      text: TODO
 
 features:
   - title: JavaScript
     details: JS
     link: /javascript/
+    icon:
+      src: /assets/icons/js.svg
   - title: Vue
     details: Vue2/Vue3
     link: /vue/
+    icon:
+      src: /assets/icons/vue.svg
   - title: HTML
     details: HyperText Markup Language
     link: /html/
+    icon:
+      src: /assets/icons/html.svg
   - title: CSS
     details: Cascading Style Sheets
     link: /css/
+    icon:
+      src: /assets/icons/css.svg
   - title: Sass
     details: sass/scss
     link: /sass/
+    icon:
+      src: /assets/icons/sass.svg
   - title: Browser
     details: 游览器
     link: /browser/
-  - title: Computer
-    details: 计算机基础
-    link: /computer/
+    icon:
+      src: /assets/icons/browser.svg
+  - title: HTTP
+    details: HTTP协议相关
+    link: /http/
+    icon:
+      src: /assets/icons/http.svg
   - title: Algorithm
     details: 算法
     link: /algorithm/
+    icon:
+      src: /assets/icons/leetcode.svg
   - title: Interview
     details: 面试部分
     link: /interview/
+    icon:
+      src: /assets/icons/interview.svg
 ---
