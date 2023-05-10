@@ -26,7 +26,7 @@ Vue 在初始化数据的时候，会给 `data` 中的属性使用 `Object.defin
 
 这里，用一张图来说明 Vue 实现响应式数据的流程：
 
-<img src="/assets/img/vue/Vue实现响应式数据流程.png">
+<img src="/img/vue/Vue实现响应式数据流程.png">
 
 1. 首先，第一步是初始化用户传入的 `data` 数据，对应源码 `src/core/instance/state.js` 的 112 行
 
@@ -260,7 +260,7 @@ Vue 中检测数组变化核心有两点：
 
 用一张流程图来说明：
 
-<img src="/assets/img/vue/Vue检测数组和属性变化.png">
+<img src="/img/vue/Vue检测数组和属性变化.png">
 
 1. 首先，第一步是初始化用户传入的 `data` 数据，对应源码 `src/core/instance/state.js` 的 112 行
 
@@ -613,7 +613,7 @@ export function defineReactive(
 
 再用一张图来说明 `Vue` 异步更新的流程：
 
-<img src="/assets/img/vue/Vue异步渲染流程.png">
+<img src="/img/vue/Vue异步渲染流程.png">
 
 1. 第一步是在 `setter` 中重写之后添加的 `dep.notify()` 方法，这个方法会通知 `watcher` 进行更新操作，对应源码 `src/core/observer.dep.js` 37 行
 
@@ -712,7 +712,7 @@ export function queueWatcher (watcher: Watcher) {
 
 一张图了解一下 `computed` 的实现：
 
-<img src="/assets/img/vue/Vue中compued怎么实现.png">
+<img src="/img/vue/Vue中compued怎么实现.png">
 
 1. 第一步是在组件实例化的时候会执行 `initComputed` 方法。对应源码 `src/core/instance/state.js` 的 169 行
 
@@ -941,7 +941,7 @@ Vue.js 在默认情况下，每次触发某个数据的 `setter` 方法后，对
 
 下图是 `nextTick` 实现流程：
 
-<img src="/assets/img/vue/Vue中nextTick实现流程图.png">
+<img src="/img/vue/Vue中nextTick实现流程图.png">
 
 - 首先会调用 `nextTick` 并传入 `cb`，对应源码 `src/core/util/next-tick.js` 87 行：
 
@@ -1158,11 +1158,11 @@ Vue 实例有一个完整的生命周期，也就是从创建、初始化数据�
 
 放上一张官网的生命周期流程图：
 
-<img src="/assets/img/vue/Vue生命周期.png">
+<img src="/img/vue/Vue生命周期.png">
 
 这里用一张图梳理了源码中关于周期的全流程（长图预警）：
 
-<img src="/assets/img/vue/Vue源码关于生命周期流程图.png">
+<img src="/img/vue/Vue源码关于生命周期流程图.png">
 
 - Vue 本质上是一个构造函数，定义在 `src/core/instance/index.js` 中：
 
@@ -1619,7 +1619,7 @@ this.router.push({ path: "register", query: { plan: "private" } });
 
 ## 3. Vuex
 
-<img src="/assets/img/vue/Vuex.png">
+<img src="/img/vue/Vuex.png">
 
 ### 3.1 vuex 有什么优缺点？
 

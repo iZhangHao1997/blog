@@ -16,45 +16,45 @@ features:
     details: JS
     link: /javascript/
     icon:
-      src: /assets/icons/js.svg
+      src: /icons/js.svg
   - title: Vue
     details: Vue2/Vue3
     link: /vue/
     icon:
-      src: /assets/icons/vue.svg
+      src: /icons/vue.svg
   - title: HTML
     details: HyperText Markup Language
     link: /html/
     icon:
-      src: /assets/icons/html.svg
+      src: /icons/html.svg
   - title: CSS
     details: Cascading Style Sheets
     link: /css/
     icon:
-      src: /assets/icons/css.svg
+      src: /icons/css.svg
   - title: Sass
     details: sass/scss
     link: /sass/
     icon:
-      src: /assets/icons/sass.svg
+      src: /icons/sass.svg
   - title: Browser
     details: 游览器
     link: /browser/
     icon:
-      src: /assets/icons/browser.svg
+      src: /icons/browser.svg
   - title: HTTP
     details: HTTP协议相关
     link: /http/
     icon:
-      src: /assets/icons/http.svg
+      src: /icons/http.svg
   - title: Algorithm
     details: 算法
     link: /algorithm/
     icon:
-      src: /assets/icons/leetcode.svg
+      src: /icons/leetcode.svg
   - title: Interview
     details: 面试部分
     link: /interview/
     icon:
-      src: /assets/icons/interview.svg
+      src: /icons/interview.svg
 ---

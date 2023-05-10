@@ -51,7 +51,7 @@ JavaScript 的数据类型主要分为两类：**原始类型(基本类型)**和
 
 JS 中的数字按照 IEEE 754 标准，使用 64 位双精度浮点型来表示。其中符号位 S（Sign），指数位 E（Exponent），尾数位 F（fraction） 分别占了 1、11、52 位，并且在 ES5 规范中指出了指数位 E 的取值范围是 `[-1074, 971]`。
 
-<img src="/assets/img/javascript/双精度数字存储结构.png" />
+<img src="/img/javascript/双精度数字存储结构.png" />
 
 | 位置  | 位数 | 作用   | 表示     |
 | ----- | ---- | ------ | -------- |
@@ -112,7 +112,7 @@ Math.pow(2, 53) - 1 === Number.MAX_SAFE_INTEGER; // true
 - 原始类型因为在内存种占固定大小的空间，所以保存在**栈内存种**；
 - 引用类型的大小不固定，所以是按引用访问的，保存在**堆内存**中。（在栈内存中存一个基本类型值保存对象在堆内存中的地址，用于引用这个对象。）
 
-<img src="/assets/img/javascript/StackandHeap.png">
+<img src="/img/javascript/StackandHeap.png">
 
 > 基本类型在当前执行环境结束时销毁，而引用类型不会随执行环境结束而销毁，只有当所有引用它的变量不存在时这个对象才被垃圾回收机制回收。
 
@@ -199,7 +199,7 @@ return false;
 
 这里提供流程图：
 
-<img src="/assets/img/javascript/图1.4.png">
+<img src="/img/javascript/图1.4.png">
 
 对于 `===` 来说就简单多了，就是判断两者类型和值是否相同。
 
@@ -653,7 +653,7 @@ console.log(my); // Person {name: "handsome", age: 23}
 
 用图片来展开上面的例子：
 
-<img src="/assets/img/javascript/WhatNewDo.png">
+<img src="/img/javascript/WhatNewDo.png">
 
 ### 4.2 如何自己实现 new 操作符
 
@@ -704,7 +704,7 @@ function myNew(constructor, ...arg) {
 
 其关系如图所示：
 
-<img src="/assets/img/javascript/原型、原型链和构造函数.webp">
+<img src="/img/javascript/原型、原型链和构造函数.webp">
 
 图中，`__proto__` 形成的链条组合，就是原型链。
 
@@ -733,7 +733,7 @@ Cat.fn = function () {};
 Cat.prototype.fn = function () {};
 ```
 
-<img src="/assets/img/javascript/图5.2.png">
+<img src="/img/javascript/图5.2.png">
 
 #### 5.2.1 封装
 
@@ -1379,7 +1379,7 @@ console.log(child1); // Child {name: "child"}
 
 图解：
 
-<img src="/assets/img/javascript/图5.2.2.1.png" />
+<img src="/img/javascript/图5.2.2.1.png" />
 
 这种方式就叫做**原型链继承**。
 
@@ -1637,7 +1637,7 @@ function Child(sex) {
 
 可以看一下 `constructor` 存在的位置：
 
-<img src="/assets/img/javascript/图5.2.2.3.png">
+<img src="/img/javascript/图5.2.2.3.png">
 
 它实际上就是构造函数原型对象上的一个属性，指向构造函数。
 
@@ -1823,7 +1823,7 @@ console.log(new Object()); // {}
 
 我们使用了 `Object.create(parent.prototype)` 创建了一个空的对象，并且这个对象的 `__proto__` 指向 `Parent.prototype` 的。
 
-<img src="/assets/img/javascript/图5.2.2.4.png">
+<img src="/img/javascript/图5.2.2.4.png">
 
 可以看到 `Prent()` 与 `child` 没有任何关系了。
 
@@ -2130,7 +2130,7 @@ false;
 
 可以看看这个例子的思维导图
 
-<img src="/assets/img/javascript/图5.2.2.7.png">
+<img src="/img/javascript/图5.2.2.7.png">
 
 其实相比**寄生组合式继承**就多了下面的 `OtherParent` 的部分
 
@@ -2244,7 +2244,7 @@ child1.getName();
 
 执行结果：
 
-<img src="/assets/img/javascript/图5.2.2.8.png">
+<img src="/img/javascript/图5.2.2.8.png">
 
 那我们是不是可以认为：
 
@@ -2951,7 +2951,7 @@ console.log(newObj);
 
 如果我们有这么一个循环引用对象，会发现并不能通过该方法实现深拷贝
 
-<img src="/assets/img/javascript/图6.2.png">
+<img src="/img/javascript/图6.2.png">
 
 但是在通常情况下，复杂数据都是可以序列化的，所以这个函数可以解决大部分问题。
 
@@ -3415,7 +3415,7 @@ nodejs 和游览器的 EventLoop 还是有很大差别的，值得单独拿出�
 
 这里放上一张网上关于 nodejs EventLoop 流程图：
 
-<img src="/assets/img/javascript/8.3图.png">
+<img src="/img/javascript/8.3图.png">
 
 这里会抛开这些晦涩的流程图，以最清晰浅显的方式来一步步拆解 nodejs 的事件循环机制。
 

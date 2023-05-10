@@ -198,7 +198,7 @@ Memory Cache 是内存中的缓存，读取内存中的数据肯定比硬盘快�
 
 当我们访问过页面以后，再次刷新页面，可以发现很多数据都来自于内存
 
-<img src="/assets/img/HTTP/从内存中读取缓存.png">
+<img src="/img/HTTP/从内存中读取缓存.png">
 
 但是我们不能让数据都放在 Memory Cache 中，因为内存的容量是要比硬盘小得多的，操作系统会谨慎使用内存进行缓存。虽然内存中可以存储大部分的文件，比如说 CSS、JS、HTML、图片等等。但是游览器会把哪些文件丢进内存这就很**玄学**。
 
@@ -259,13 +259,13 @@ Cache-control: max-age=30
 
 `Cache-control` **可以在请求头或者响应头中设置**，并且可以组合多种指令。
 
-<img src="/assets/img/HTTP/多种指令配合流程图.png">
+<img src="/img/HTTP/多种指令配合流程图.png">
 
 从图中我们可以看到，我们可以将**多个指令配合起来一起使用**，达到多个目的。比如说我们希望资源能被缓存下来，并且是客户端和代理服务器都能缓存，还能设置缓存失效时间等等。
 
 接下来我们就来学习一些常见指令的作用
 
-<img src="/assets/img/HTTP/常见指令的作用.png">
+<img src="/img/HTTP/常见指令的作用.png">
 
 #### 协商缓存
 
@@ -273,7 +273,7 @@ Cache-control: max-age=30
 
 当游览器发起请求验证资源时，如果资源没有做改变，那么服务器就会返回 304 状态码，并且更新游览器缓存有效期。
 
-<img src="/assets/img/HTTP/协商缓存.png">
+<img src="/img/HTTP/协商缓存.png">
 
 ##### Last-Modified 和 If-Modified-Since
 
@@ -312,7 +312,7 @@ Cache-control: max-age=30
 
 首先从 MDN 上图看游览器的渲染过程：
 
-<img src="/assets/img/browsers/游览器渲染过程.png">
+<img src="/img/browsers/游览器渲染过程.png">
 
 从上图可以看到，游览器的渲染过程如下：
 
@@ -326,7 +326,7 @@ Cache-control: max-age=30
 
 ### 4.1 生成渲染树
 
-<img src="/assets/img/browsers/生成渲染树.png">
+<img src="/img/browsers/生成渲染树.png">
 
 为了构建渲染树，游览器主要完成了以下工作：
 
@@ -364,7 +364,7 @@ Cache-control: max-age=30
 
 我们可以看到，第一个 div 节点的显示尺寸设置为视口窗口的 50%，第二个 div 尺寸设置为父节点的 50%。而在回流这个阶段，我们就需要根据视口的具体宽度，将其转化为实际的像素值。
 
-<img src="/assets/img/browsers/Layout阶段.png">
+<img src="/img/browsers/Layout阶段.png">
 
 ### 4.3 重绘
 
@@ -670,7 +670,7 @@ Set-Cookie: rsv_i=f9a0SIItKqzv7kqgAAgphbGyRts3RwTg%2FLyU3Y5Eh5LwyfOOrAsvdezbay0Q
 
 到此，我们总结一下主要内容，也就是游览器端的网络请求过程：
 
-<img src="/assets/img/browsers/游览器端网络请求过程.png">
+<img src="/img/browsers/游览器端网络请求过程.png">
 
 ## 6. 说一说从输入 URL 到页面呈现发生了什么？————解析算法篇
 
@@ -878,7 +878,7 @@ if (t->isCloseTag(brTag) && m_document->inCompatMode()) {
 
 梳理一下这一节的主要脉络:
 
-<img src="/assets/img/browsers/游览器端解析算法过程.png">
+<img src="/img/browsers/游览器端解析算法过程.png">
 
 ## 7. 说一说从输入 URL 到页面呈现发生了什么？————渲染过程篇
 
@@ -939,7 +939,7 @@ if (t->isCloseTag(brTag) && m_document->inCompatMode()) {
 
 这里我以百度首页为例，大家可以在 Chrome 开发者工具中在设置栏中展开 `more tools`, 然后选择 Layers 面板，就能看到下面的绘制列表:
 
-<img src="/assets/img/browsers/生成绘制列表.png">
+<img src="/img/browsers/生成绘制列表.png">
 
 ### 7.3 生成图块和生成位图
 
@@ -971,4 +971,4 @@ if (t->isCloseTag(brTag) && m_document->inCompatMode()) {
 
 到这里，我们算是把整个过程给走通了，现在重新来梳理一下页面渲染的流程。
 
-<img src="/assets/img/browsers/输入URL到页面呈现过程.png">
+<img src="/img/browsers/输入URL到页面呈现过程.png">

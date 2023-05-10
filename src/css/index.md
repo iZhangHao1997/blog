@@ -18,7 +18,7 @@
 
 ## 2. 水平垂直居中的方法有哪些？
 
-<img src="/assets/img/css/水平垂直居中方案.png" />
+<img src="/img/css/水平垂直居中方案.png" />
 
 假设 HTML 代码：
 
@@ -410,7 +410,7 @@ CSS 基本选择器包括 ID 选择器、类选择器、标签选择器、通配
 }
 ```
 
-<img src="/assets/img/css/border实现三角形.png">
+<img src="/img/css/border实现三角形.png">
 
 想获得其中任意一个三角形，则设置其他方向上的 `border-color` 为 `transparent` 透明就可以了。
 
@@ -553,7 +553,7 @@ W3C 对 BFC 的定义如下：浮动元素和绝对定位元素，非块级盒�
 </html>
 ```
 
-<img src="/assets/img/css/BFC防止父元素高度塌陷.png">
+<img src="/img/css/BFC防止父元素高度塌陷.png">
 
 接下来将 inner 元素设为浮动：
 
@@ -568,7 +568,7 @@ W3C 对 BFC 的定义如下：浮动元素和绝对定位元素，非块级盒�
 
 会产生这样的塌陷效果：
 
-<img src="/assets/img/css/父元素高度塌陷.png">
+<img src="/img/css/父元素高度塌陷.png">
 
 但是如果我们对父元素设置 BFC 之后，这样的问题就解决了：
 
@@ -616,7 +616,7 @@ W3C 对 BFC 的定义如下：浮动元素和绝对定位元素，非块级盒�
 </html>
 ```
 
-<img src="/assets/img/css/同一个BFC子元素垂直方向边距重叠.png">
+<img src="/img/css/同一个BFC子元素垂直方向边距重叠.png">
 
 此时三个元素的上下间隔都是 10px, 因为三个元素同属于一个 BFC。 现在我们做如下操作:
 
@@ -639,7 +639,7 @@ style 增加：
 ```
 
 效果如下：
-<img src="/assets/img/css/BFC消除边距重叠问题.png">
+<img src="/img/css/BFC消除边距重叠问题.png">
 
 可以明显地看到间隔变大了，而且是原来的两倍，符合我们的预期。
 
@@ -1097,7 +1097,7 @@ button:hover {
 
 #### 兼容性
 
-<img src="/assets/img/css/resizeObserver兼容性.png" />
+<img src="/img/css/resizeObserver兼容性.png" />
 
 IE11+ 支持，其他主流游览器也支持，兼容性还不错。
 
@@ -1125,7 +1125,7 @@ resizeObserver.observe(tableContainer);
 
 此时我们在控制台会看到类似下图的结果：
 
-<img src="/assets/img/css/resizeObserver控制台输出.png" />
+<img src="/img/css/resizeObserver控制台输出.png" />
 
 #### contentRect 是什么
 
@@ -1165,7 +1165,7 @@ resizeObserver.observe(tableContainer);
 
 #### 兼容性
 
-<img src="/assets/img/css/mutationObserver兼容性.png" />
+<img src="/img/css/mutationObserver兼容性.png" />
 
 可见 `mutationObserver` 兼容性比 `resizeObserver` 好，主流游览器中除了 IE11 以下都支持。
 

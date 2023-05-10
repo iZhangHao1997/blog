@@ -276,9 +276,9 @@ HTTP/1.1 200 OK
 
 展示一下请求头和响应头在报文中的位置：
 
-<img src="/assets/img/HTTP/请求头.png">
+<img src="/img/HTTP/请求头.png">
 
-<img src="/assets/img/HTTP/响应头.png">
+<img src="/img/HTTP/响应头.png">
 
 不管是请求头还是响应头，其中的字段是相当多的，而且牵扯到 `http` 非常多的特性，这里就不一一列举的，重点看看这些头部字段的格式：
 

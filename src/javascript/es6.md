@@ -145,7 +145,7 @@ child instanceof Parent; // true
 
 虽然继承方式的优点是可以向父类构造函数传参，不会与父类引用属性共享，可以复用父类的函数，但是存在的问题是继承父类函数的时候调用了父类构造函数，导致子类的原型上多了不需要的父类属性，在内存上导致浪费。
 
-<img src="/assets/img/javascript/ES6-组合继承内存浪费.png">
+<img src="/img/javascript/ES6-组合继承内存浪费.png">
 
 ### 寄生组合继承
 
@@ -173,7 +173,7 @@ child.getName(); // "tony"
 child instanceof Parent; // true
 ```
 
-<img src="/assets/img/javascript/ES6-寄生组合继承.png">
+<img src="/img/javascript/ES6-寄生组合继承.png">
 
 以上继承实现的核心就是将父类的原型赋值给了子类，并且构造函数设置为子类，这样既解决了父类属性的问题，还能正确的找到子类的构造函数。
 
@@ -994,7 +994,7 @@ Event Loop 决定了 JS 代码中异步代码的执行顺序，比如 `setTimeou
 
 可以把执行栈认为是存储函数调用的**栈结构**，遵循先进后出的原则。
 
-<img src="/assets/img/javascript/执行栈可视化.gif">
+<img src="/img/javascript/执行栈可视化.gif">
 
 当开始执行 JS 代码时，首先会执行一个 `main` 函数，然后执行我们的代码。根据先进后出的原则，后执行的函数会先弹出栈，在图中我们也可以发现，`foo` 函数后执行，当执行完毕后就从栈中弹出了。
 
@@ -1010,7 +1010,7 @@ function bar() {
 bar();
 ```
 
-<img src="/assets/img/javascript/函数执行顺序.png">
+<img src="/img/javascript/函数执行顺序.png">
 
 大家可以在上图清晰的看到报错在 `foo` 函数，`foo` 函数又是在 `bar` 函数中调用的。
 
@@ -1023,7 +1023,7 @@ function bar() {
 bar();
 ```
 
-<img src="/assets/img/javascript/爆栈.png">
+<img src="/img/javascript/爆栈.png">
 
 ### 游览器中的 Event Loop
 
@@ -1031,7 +1031,7 @@ bar();
 
 上面我们讲到了什么是执行栈，大家也知道了当我们执行 JS 代码的时候其实是往执行栈放入函数，那么遇到异步代码的时候该怎么办？其实当遇到异步代码的时候，会被**挂起**并在需要执行的时候加入到**Task**队列中。一旦执行栈为空，Event Loop 就会从 Task 队列中拿出需要执行的代码并放入执行栈中执行，所以本质上来说 JS 中的异步还是同步行为。
 
-<img src="/assets/img/javascript/事件循环.png">
+<img src="/img/javascript/事件循环.png">
 
 不同的任务源会被分配到不同的 Task 队列中，任务源可以分为**微任务（microtask）**和 **宏任务（macrotask）**。在 ES6 规范中，microtask 称为 `jobs`，macrotask 称为 `task`。下面来看以下代码的执行顺序：
 
