@@ -8,6 +8,18 @@ export default defineConfig({
   description: "A FE blog",
   lang: "zh",
   lastUpdated: true,
+
+  head: [
+    [
+      "link",
+      {
+        rel: "icon",
+        type: "image/x-icon",
+        href: "/blog/favicon.ico",
+      },
+    ],
+  ],
+
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     outline: [2, 3],
@@ -67,6 +79,15 @@ export default defineConfig({
     editLink: {
       pattern: "https://github.com/iZhangHao1997/blog/edit/main/src/:path",
       text: "Edit this page on GitHub",
+    },
+
+    search: {
+      provider: "local",
+    },
+
+    footer: {
+      message: "Good good study Day day up",
+      copyright: "Copyright © iZhangHao1997",
     },
   },
 });

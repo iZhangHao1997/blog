@@ -8,7 +8,7 @@ hero:
   tagline: As an old proverb said the palest ink is better than the best memory.
   actions:
     - theme: brand
-      text: Documentation
+      text: Start
       link: /javascript/
 
 features:
