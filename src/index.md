@@ -8,7 +8,7 @@ hero:
   tagline: As an old proverb said the palest ink is better than the best memory.
   actions:
     - theme: brand
-      text: Start
+      text: Get started
       link: /javascript/
 
 features:
@@ -44,7 +44,7 @@ features:
       src: /icons/browser.svg
   - title: HTTP
     details: HTTP协议相关
-    link: /http/
+    link: /web-http/
     icon:
       src: /icons/http.svg
   - title: Algorithm

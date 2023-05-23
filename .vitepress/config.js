@@ -9,6 +9,7 @@ export default defineConfig({
   lang: "zh",
   lastUpdated: true,
 
+  // set page favicon.ico
   head: [
     [
       "link",
@@ -32,7 +33,7 @@ export default defineConfig({
       { text: "CSS", link: "/css/", activeMatch: "/css/" },
       { text: "Sass", link: "/sass/", activeMatch: "/sass/" },
       { text: "Browser", link: "/browser/", activeMatch: "/browser/" },
-      { text: "HTTP", link: "/http/", activeMatch: "/http/" },
+      { text: "HTTP", link: "/web-http/", activeMatch: "/web-http/" },
     ],
 
     sidebar: {
