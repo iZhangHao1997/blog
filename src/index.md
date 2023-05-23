@@ -9,12 +9,12 @@ hero:
   actions:
     - theme: brand
       text: Get started
-      link: /javascript/
+      link: /javascript/syntax/data-structures
 
 features:
   - title: JavaScript
     details: JS
-    link: /javascript/
+    link: /javascript/syntax/data-structures
     icon:
       src: /icons/js.svg
   - title: Vue

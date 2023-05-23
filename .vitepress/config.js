@@ -27,7 +27,11 @@ export default defineConfig({
     logo: "/icons/blog.svg",
     nav: [
       { text: "Home", link: "/" },
-      { text: "JavaScript", link: "/javascript/", activeMatch: "/javascript/" },
+      {
+        text: "JavaScript",
+        link: "/javascript/syntax/data-structures",
+        activeMatch: "/javascript",
+      },
       { text: "Vue", link: "/vue/", activeMatch: "/vue/" },
       { text: "HTML", link: "/html/", activeMatch: "/html/" },
       { text: "CSS", link: "/css/", activeMatch: "/css/" },
@@ -39,12 +43,46 @@ export default defineConfig({
     sidebar: {
       "/javascript/": [
         {
-          text: "Javascript",
+          text: "Javascript 基础知识",
+          collapsed: false,
           items: [
-            { text: "Javascript 高频问答", link: "/javascript/" },
-            { text: "Javascript ES6标准", link: "/javascript/es6" },
-            { text: "Javascript 编程题", link: "/javascript/code" },
+            { text: "数据类型", link: "/javascript/syntax/data-structures" },
+            {
+              text: "执行上下文/作用域/闭包",
+              link: "/javascript/syntax/closures",
+            },
+            { text: "this", link: "/javascript/syntax/this" },
+            { text: "New", link: "/javascript/syntax/new" },
+            { text: "原型和继承", link: "/javascript/syntax/prototype" },
+            { text: "深拷贝和浅拷贝", link: "/javascript/syntax/copy" },
+            { text: "模块化开发", link: "/javascript/syntax/modules" },
+            {
+              text: "EventLoop与事件循环",
+              link: "/javascript/syntax/event-loop",
+            },
+            { text: "异步编程", link: "/javascript/syntax/asynchronous" },
+            {
+              text: "防抖和节流",
+              link: "/javascript/syntax/debounce-and-throttle",
+            },
+            {
+              text: "垃圾回收机制",
+              link: "/javascript/syntax/garbage-collection",
+            },
+            { text: "ES 新语法补充", link: "/javascript/syntax/new-api" },
+            {
+              text: "正则表达式",
+              link: "/javascript/syntax/regular-expressions",
+            },
           ],
+        },
+        {
+          text: "Javascript ES6标准",
+          link: "/javascript/es6",
+        },
+        {
+          text: "Javascript 编程题",
+          link: "/javascript/code",
         },
       ],
 
