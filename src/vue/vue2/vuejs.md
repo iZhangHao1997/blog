@@ -1,8 +1,8 @@
-# Vue2 基础知识及基础原理的源码级回答
+# Vue2
 
-## 1. Vue.js
+以下列了一些 Vue2.js 需要深入理解一些问题。
 
-### 1.1 讲一讲你对 MVVM 的理解？和 MVC 有什么不同？
+## 对 MVVM 的理解？和 MVC 有什么不同？
 
 - `MVC` 指的是 `Model-View-Controller`，即 模型-视图-控制器
   - 使用 `MVC` 的目的就是将模型和视图分离
@@ -15,7 +15,7 @@
 - `MVVM` 通过数据来显示视图，而不是通过节点操作
 - `MVVM` 主要解决了 `MVC` 中大量的 `DOM` 操作，使页面渲染性能降低，加载速度慢，影响用户体验的问题
 
-### 1.2 请说一下 Vue 响应式数据的原理？
+## 简述 Vue 响应式数据的原理？
 
 **Vue 2.0：**
 `Vue 2.0` 底层对于响应式数据的核心是 `Object.defineProperty`。
@@ -215,7 +215,7 @@ export function defineReactive(
 
 5. 第五步其实就是使用 `defineReactive` 方法中的 `Object.defineProperty` 重新定义数据。在 `get` 中通过 `dep.depend` 收集依赖，当数据改变时，拦截属性的更新操作，通过 `Set` 中的 `dep.notify()` 进行相关依赖更新
 
-### 1.3 Vue 是如何实现响应式数据的？
+## Vue 是如何实现响应式数据的？
 
 Vue 主要通过以下 4 个步骤实现响应式数据
 
@@ -224,7 +224,7 @@ Vue 主要通过以下 4 个步骤实现响应式数据
 - 实现一个**订阅者**「**Watcher**」：`Watcher` 订阅者是 `Observer` 和 `Compile` 之间通信的桥梁，主要任务是订阅 `Observer` 中的属性值变化的消息，当收到属性值变化的消息时，触发解析器 `Compile` 中对应的更新函数
 - 实现一个**订阅器**「**Dep**」：订阅器采用发布-订阅设计模式，用来收集订阅者 `Watcher`，对监听器 `Observer` 和订阅者 `Watcher` 进行统一管理
 
-### 1.4 直接给一个数组项赋值，Vue 能检测到吗？
+## 直接给一个数组项赋值，Vue 能检测到吗？
 
 由于 `JavaScript` 的限制，Vue 并不能检测到以下数组的改变（使用数组实例自带的方法可以，因为已经重写）：
 
@@ -251,7 +251,7 @@ vm.items.splice(index, 1, newValue);
 vm.item.splice(newLength - 1);
 ```
 
-### 1.5 Vue 中如何检测数组的变化的？
+## Vue 中如何检测数组的变化的？
 
 Vue 中检测数组变化核心有两点：
 
@@ -485,7 +485,7 @@ export function observe (value: any, asRootData: ?boolean): Observer | void {
 
 其实就是遍历数组，对里面的每一项都调用 `observe` 方法，进行深度观测。
 
-### 1.6 Vue 如何通过 vm.$set() 来解决对象新增/删除属性不能响应的问题？
+## Vue 如何通过 vm.$set() 来解决对象新增/删除属性不能响应的问题？
 
 由于 JS 限制，Vue 无法检测到对象属性的添加或删除。这是由于 Vue 会在初始化实例时对属性的 `geeter` 和 `setter` 进行劫持，所以属性必须在 data 对象上才能让 Vue 让它们转换为响应式数据。
 
@@ -607,7 +607,7 @@ export function defineReactive(
 }
 ```
 
-### 1.7 为什么 Vue 要采用异步渲染？
+## 为什么 Vue 要采用异步渲染？
 
 因为如果不采用异步渲染，每次更新数据都会进行重新渲染，为了提高性能，`Vue` 通过异步渲染的方式。在本轮数据更新后，再去异步更新视图。
 
@@ -706,7 +706,7 @@ export function queueWatcher (watcher: Watcher) {
 
 4. 第四步就是执行 `nextTick(flushSchedulerQueue)` 方法，在下一个 `tick` 中刷新 `watcher` 队列
 
-### 1.8 Vue 中的 computed 是怎么实现的？
+## Vue 中的 computed 是怎么实现的？
 
 这里先给一个结论：计算属性 `computed` 的本质是 `computed Watcher`，其具有缓存。
 
@@ -931,7 +931,7 @@ depend () {
 
 总而言之，为什么计算属性能够根据依赖响应式更新呢？因为 vue 在访问 computed 数据的时候，计算属性会计算，同时访问了依赖的数据，这些数据被访问就会进行依赖收集，这样以后计算属性依赖的响应式数据变化就会通知 computed 重新计算和渲染。
 
-### 1.9 谈一下 nextTick 的实现原理？
+## 谈一下 nextTick 的实现原理？
 
 Vue.js 在默认情况下，每次触发某个数据的 `setter` 方法后，对应的 `watcher` 对象其实会被 `push` 到一个队列 `queue` 中，在下一个 `tick` 的时候将这个队列 `queue` 全部拿出来 `run`（ `Watcher` 对象的一个方法，用来触发 `patch` 操作）一遍。
 
@@ -1066,7 +1066,7 @@ callbacks.push(() => {
 
 当我们执行 `callbacks` 的函数时，发现没有 `cb` 而有 `_resolve` 会执行之前返回的 `promise` 对象的 `resolve` 函数。
 
-### 1.10 Vue 组件的 data 为什么是个函数？
+## Vue 组件的 data 为什么是个函数？
 
 而 `new Vue` 实例里，`data` 可以直接是一个对象？
 
@@ -1135,7 +1135,7 @@ console.log(zhiming.data.age); // 25
 
 而 `new Vue` 的实例，是不会被复用的，因此不存在引用对象的问题。
 
-### 1.11 谈谈你对 Vue 生命周期的理解？
+## 谈谈你对 Vue 生命周期的理解？
 
 首先概括一下 Vue 生命周期是什么：
 
@@ -1370,7 +1370,7 @@ Vue.prototype.$destroy = function () {
 };
 ```
 
-### 1.12 虚拟 DOM 的优缺点？
+## 虚拟 DOM 的优缺点？
 
 优点：
 
@@ -1382,7 +1382,7 @@ Vue.prototype.$destroy = function () {
 
 - 无法进行极致优化
 
-### 1.13 虚拟 DOM 的实现原理？
+## 虚拟 DOM 的实现原理？
 
 虚拟 `Dom` 的实现原理主要包括下面三个部分：
 
@@ -1390,7 +1390,7 @@ Vue.prototype.$destroy = function () {
 - 通过 `diff` 原理比对新旧 `Dom`
 - 通过 `patch` 将新旧 `Dom` 的差异应用到真实 `Dom` 树上
 
-### 1.14 nextTick 实现原理是什么？在 Vue 中有什么作用？
+## nextTick 实现原理是什么？在 Vue 中有什么作用？
 
 - 原理：`Event Loop` 事件循环
   - 流程是依次检测是否支持 `Promise`、`MutationObserver` 、`setImmediate`，最后是 `setTimeout` 的回调方法，以此确定回调函数队列是以哪个 API 来异步执行
@@ -1398,20 +1398,20 @@ Vue.prototype.$destroy = function () {
   - 这个队列可能是 `microTask` 队列，也可能是 `marcoTask` 队列，前两个是微任务队列，后两个是宏任务队列
 - 作用：在下一次 `Dom` 更新循环结束后延迟执行回调，在修改数据之后使用 `$nextTick`，则可以在回调中获取更新后的 `DOM`。
 
-### 1.15 v-for 中 key 的作用是什么？
+## v-for 中 key 的作用是什么？
 
 > [举例说明 key 的作用](https://www.jianshu.com/p/4bd5e745ce95)，[（重点看）从 diff 算法原理解释 key 的作用](https://juejin.im/post/5e8694b75188257372503722#comment)
 
 总的来说就是 `diff` 算法比对新旧 `Dom` 的时候，如果有 `key` 就可以做一个唯一标识，判断是否为同一个节点，提高同级的 `vnode` 比对效率。
 
-### 1.16 v-if 和 v-show 有什么区别？
+## v-if 和 v-show 有什么区别？
 
 - `v-if` 根据条件决定是否渲染，会在切换过程中重建和销毁节点
 - `v-show` 不会根据初始条件，都会进行渲染，切换只是基于 CSS 的 `display: none`
 
 所以 `v-if` 切换消耗比较大，`v-show` 初始化消耗较大；因此频繁切换的话使用 `v-show`，比较少切换使用 `v-if`。
 
-### 1.17 如何使用 Watch 监听嵌套对象的变化？
+## 如何使用 Watch 监听嵌套对象的变化？
 
 ```js
 watch: {
@@ -1421,7 +1421,7 @@ watch: {
 }
 ```
 
-### 1.18 组件间通信的方式有哪些？
+## 组件间通信的方式有哪些？
 
 [组件中通信六种方式详解](https://segmentfault.com/a/1190000019208626#item-5)
 
@@ -1436,13 +1436,13 @@ watch: {
   - $attr / $listeners
   - provide / inject
 
-### 1.19 为什么 v-if 和 v-for 不建议连在一起使用？
+## 为什么 v-if 和 v-for 不建议连在一起使用？
 
 `v-for` 的优先级高于 `v-if`，所以不管 `v-if` 是否成立都会先执行 `v-for` 造成性能浪费。
 
-### 1.20 父组件如何监听到子组件的生命周期？
+## 父组件如何监听到子组件的生命周期？
 
-#### 方法一：通过 emit
+### 方法一：通过 emit
 
 ```html
 // Parent.vue
@@ -1451,13 +1451,13 @@ watch: {
 // Child.vue mounted() { this.$emit('mounted'); }
 ```
 
-#### 方法二：通过 hook
+### 方法二：通过 hook
 
 ```html
 // Parent.vue <Child @hook:mounted="doSomething" />
 ```
 
-### 1.21 讲一下 vue 的优缺点？
+## 讲一下 vue 的优缺点？
 
 - 优点
   1. 数据驱动视图：对真实的 DOM 抽象成一个 Virtual DOM（本质是一个 JS 对象），并配合 diff 算法、响应式和观察者、异步队列等手段以最小代价更新 DOM，渲染页面
@@ -1470,7 +1470,7 @@ watch: {
   2. spa 的先天不足，首屏性能问题（白屏）
   3. 由于百度等搜索引擎爬虫无法爬取 js 中的内容，故 spa 先天就对 seo 优化心有余力不足（谷歌的 puppeteer 就挺牛逼的，实现预渲染底层也是用到了这个工具）
 
-### 1.22 使用 .sync 更新 props
+## 使用 .sync 更新 props
 
 某些情况下，我们需要对一个 prop 进行“双向绑定”。不幸的是，真正的双向绑定会带来维护上的问题，因为子组件可以变更父组件，且在父组件和子组件都没有明显的变更来源。
 
@@ -1496,160 +1496,3 @@ this.$emit("update:title", newTitle);
 ```
 
 > 注意带有 `.sync` 修饰符的 `v-bind` **不能**和表达式一起使用（例如 `v-bind:title.sync="doc.title" + '!'` 是无效的）。取而代之的是，我们只能提供想要绑定的 property 名，类似 `v-model`。
-
-## 2. Router
-
-### 2.1 route/router 有什么区别？
-
-- `route` 表示路由信息的对象，包括 `path`、`params`、`query`、`hash`、`fullPath`、 `matched`、`name` 等路由信息参数
-- `router` 表示路由实例对象，包括了路由的跳转方法，钩子函数等
-
-扩展，路由对象属性：
-
-- `$route.path`
-  - 类型：`string`
-    字符串，对应当前的路由路径，总是解析为绝对路径，如 `/foo/bar`
-- `$route.fullPath`
-  - 类型：`string`
-    完成解析之后的 URL，包含查询参数和 `hash` 完整的路径
-- `$route.params`
-  - 类型：`object`
-    一个 key/value 对象，包含了动态片段和全匹配片段，如果没有路由参数，就是一个空对象。
-- `$route.query`
-  - 类型：`object`
-    一个 key/value 对象，表示 URL 查询参数。例如，对于路径 `/foo?user=1`，则有 `$route.query.user == 1`，如果没有查询参数，则是个空对象。
-- `$route.name`
-  - 类型：`string`
-    当前路由的名称，路由定义时命名的。
-- `$route.hash`
-  - 类型：`string`
-    当前路由的 hash 值（带 `#`），如果没有 hash 值，则为空字符串
-- `$route.matched`
-  - 类型：`array`
-    一个数组，包含当前路由的所有嵌套路径片段的**路由记录**。路由记录就是 `routes` 配置数组中的对象副本（还有在 `children` 数组）
-- `$route.redirectedFrom`
-  如果存在重定向，即为重定向来源的路由名字
-
-### 2.2 vue router 中有哪些导航守卫？
-
-[Vue Router 导航守卫](https://router.vuejs.org/zh/guide/advanced/navigation-guards.html)
-
-记住**参数或查询的改变并不会触发进入/离开的导航守卫**。你可以通过观察 `$route` 对象来应对这些变化，或使用 `beforeRouteUpdate` 的组件内守卫。
-
-- 全局导航守卫：全局前置钩子 `beforeEach`、全局解析守卫 `beforeResolve`、全局后置钩子 `afterEach`
-- 路由独享的守卫： `beforeEnter`
-- 组件内的守卫：`beforeRouteEnter`、`beforeRouteUpdate`、`beforeRouteLeave`
-
-完整的导航解析流程：
-
-1. 导航被触发
-1. 在失活的组件里调用 `beforeRouteLeave` 守卫
-1. 调用全局的 `beforeEach` 守卫
-1. 在复用的组件里调用 `beforeRouteUpdate` 守卫（2.2+）
-1. 在路由配置里调用 `beforeEnter`
-1. 解析异步路由组件
-1. 在被激活的组件里调用 `beforeRouteEnter`
-1. 调用全局的 `beforeResolve` 守卫（2.5+）
-1. 导航被确认
-1. 调用全局的 `afterEach` 钩子
-1. 触发 DOM 更新
-1. 用创建好的实例调用 `beforeRouteEnter` 守卫中传给 `next` 的回调函数
-
-### 2.3 vue router 中的 hash/history 两种模式有什么区别？
-
-- `hash` 模式 `url` 上显示 `#`，而 `history` 模式没有
-- 刷新页面时，`hash` 模式可以正常加载到 `hash` 值对应的页面，`history` 模式没有处理的话，会返回 404，一般需要后端将所有页面都配置重定向到首页路由(try_files $uri $uri/ index.html)
-- 兼容性上，`hash` 模式可以支持低版本游览器和 IE
-
-### 2.4 vue router 中的 hash/history 是如何实现的？
-
-- `hash` 模式
-
-  - `#` 后面 `hash` 值的变化，不会导致游览器向服务器发出请求，就不会刷新页面，同时通过监听 `hashChange` 事件可以知道 `hash` 发生了哪些变化，根据 `hash` 变化来实现页面的局部更新
-  - hash 虽然在 URL 中，但不被包括在 HTTP 请求中；用来指导浏览器动作，对服务端安全无用，hash 不会重加载页面。
-    hash 模式下:仅 hash 符号之前的内容会被包含在请求中，如 `http://www.xxx.com`，因此对于后端来说，即使没有做到对路由的全覆盖，也不会返回 404 错误。
-
-- `history` 模式
-  - `histroy` 模式的实现，主要是 `HTML5` 标准发布的两个 API：`pushState` 和 `replaceState`，这两个 API 可以改变 URL，但是不会发送请求，这样就可以监听 URL 变化来实现局部更新
-  - 前端的 URL 必须和实际向后端发起请求的 URL 一致，如 `http://www.xxx.com/items/id`。后端如果缺少对 `/items/id` 的路由处理，将返回 404 错误。Vue-Router 官网里如此描述：“不过这种模式要玩好，还需要后台配置支持……所以呢，你要在服务端增加一个覆盖所有情况的候选资源：如果 URL 匹配不到任何静态资源，则应该返回同一个 index.html 页面，这个页面就是你 app 依赖的页面。”
-
-### 2.5 怎么定义 vue router 的动态路由？怎么获取传过来的值？
-
-动态路由的创建的时候在**路径参数**使用冒号 `:` 标记，比如 `/users/:id`，参数值会在 `this.$route.params` 中获取到。
-
-```js
-{
-  path: '/users/:id',
-  name: '用户',
-  component: User
-}
-```
-
-### 2.6 vue router 的传参方式有哪些？如何传参？
-
-- 通过 `params`
-  - `this.$router.push` 的时候要使用 `name`，不能使用 `path`
-  - 参数不会显示在 URL 上
-  - 游览器刷新会清空参数
-- 通过 `query`
-  - 只能用 `path` 不能使用 `name`
-  - 参数会显示在 URL 上
-  - 游览器刷新不会清空参数
-
-例子：
-
-```js
-// params
-this.router.push({ name: "user", params: { userId } });
-// 这里的 params 不生效
-this.router.push({ path: "/user", params: { userId } });
-
-// query，带参数查询，编程 /register?path=private
-this.router.push({ path: "register", query: { plan: "private" } });
-```
-
-### 2.7 vue router 和 location.href 有什么区别？
-
-[彻底搞懂路由跳转：location 和 history 接口](https://segmentfault.com/a/1190000014120456)
-
-1. 首先 `location` 是 `window` 下的一个属性，它有许多属性描述当前游览器窗口的页面，我们可以通过 location 对象获取到当前路由的信息。location.href 是当前路由 URL 的描述，可以同通过 location.href 改变当前路由的 url，以及通过 location.hash 改变 `#` 后面的 url，两者都不会刷新页面。
-1. vue router 有两种模式：`history` 和 `hash` 模式
-1. hash 模式就是改变 `#` 后面的值实现的路由
-1. history 模式基于 H5 的新 API history.pushState 和 history.replaceState，pushState 会向游览器的历史栈顶压栈，而 replaceState 会替换栈顶的记录
-
-## 3. Vuex
-
-<img src="/img/vue/Vuex.png">
-
-### 3.1 vuex 有什么优缺点？
-
-- 优点
-  - 解决了非父子组件的消息传递（将数据放在 `state` 中）
-  - 减少了 `ajax` 请求次数，有些情景可以直接从内存中的 `state` 中获取
-- 缺点
-  - 游览器刷新后，`vuex` 中的 `state` 数据重新变回初始状态
-
-### 3.2 vuex 有哪几种属性？
-
-- `State` ：`vuex` 基本数据，用于存储变量
-- `Getter`：从 `state` 派生的数据，相当于 `state` 的基本属性
-- `Mutation`: 存放更新数据的**同步**方法，通过 `commit` 提交；
-- `Action`： 可以包含**异步**操作，最终还是通过提交 `Mutation` 更新状态；通过 `dispatch` 调用 `Action` 里的方法；
-- `Module`： 用于将 `vuex` 切分为模块，每个模块有自己的 `State`、`Getter`、`Mutation`和 `Action`，使不同模块代码分离，便于管理维护
-
-### 3.3 vuex 中的 state 有什么特性？
-
-- `vuex` 就是一个仓库，仓库里面放了很多对象，其中 `state` 就是存放数据源的存放地
-- `state` 里面的数据都是响应式的，`vue` 组件从 `store` 中读取数据，若是 `store` 中的数据改变，依赖这个数据的组件也会更新数据
-- 它通过 `mapState` 把全局的 `state` 和 `getters` 映射到当前组件的 `computed` 计算属性中
-
-### 3.4 vuex 中的 getters 有什么特性？
-
-- `getter` 可以对 `state` 进行计算操作，可以把它看作 `state` 的计算属性
-- 虽然放在组件中也可以做计算属性，但 `getter` 可以在多个组件中复用
-- 如果一个状态只在一个组件内使用，是可以不用 `getters`
-
-### 3.5 Vue 中对 Ajax 请求代码应该写在组件的 methods 中还是 vuex 的 actions 中？
-
-- 如果请求的数据是不被其他组件公用的，仅仅在请求的组件内使用，就不需要放入 `vuex` 的 `state` 里
-- 如果被其他地方复用，可以将请求放入 `action` 里，方便复用；如果不需要复用这个请求，直接写在 `Vue` 文件里会更方便

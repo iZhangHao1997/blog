@@ -32,7 +32,7 @@ export default defineConfig({
         link: "/javascript/syntax/data-structures",
         activeMatch: "/javascript",
       },
-      { text: "Vue", link: "/vue/", activeMatch: "/vue/" },
+      { text: "Vue", link: "/vue/vue2/vuejs", activeMatch: "/vue/" },
       { text: "HTML", link: "/html/", activeMatch: "/html/" },
       { text: "CSS", link: "/css/", activeMatch: "/css/" },
       { text: "Sass", link: "/sass/", activeMatch: "/sass/" },
@@ -95,10 +95,21 @@ export default defineConfig({
 
       "/vue/": [
         {
-          text: "Vue",
+          text: "Vue2",
+          collapsed: false,
           items: [
-            { text: "vue2", link: "/vue/vue2" },
-            { text: "vue3", link: "/vue/vue3" },
+            { text: "vue.js", link: "/vue/vue2/vuejs" },
+            { text: "vue-router", link: "/vue/vue2/vue-router" },
+            { text: "vuex", link: "/vue/vue2/vuex" },
+          ],
+        },
+        {
+          text: "Vue3",
+          collapsed: false,
+          items: [
+            { text: "vue.js", link: "/vue/vue3/vuejs" },
+            { text: "vue-router", link: "/vue/vue3/vue-router" },
+            { text: "pinia", link: "/vue/vue3/pinia" },
           ],
         },
       ],

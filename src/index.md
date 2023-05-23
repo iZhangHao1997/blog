@@ -8,7 +8,7 @@ hero:
   tagline: As an old proverb said the palest ink is better than the best memory.
   actions:
     - theme: brand
-      text: Get started
+      text: Get Started
       link: /javascript/syntax/data-structures
 
 features:
@@ -19,7 +19,7 @@ features:
       src: /icons/js.svg
   - title: Vue
     details: Vue2/Vue3
-    link: /vue/
+    link: /vue/vue2/vuejs
     icon:
       src: /icons/vue.svg
   - title: HTML
