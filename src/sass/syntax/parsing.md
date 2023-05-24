@@ -22,4 +22,4 @@ Dart Sass 目前仅支持 UTF-8 编码。因此，最安全的做法是将 Sass 
 
 请注意，这与 CSS 不同，后者指定如何从大多数错误中恢复而不是立即失败。这是 SCSS 严格来说不是 CSS 超集的少数情况之一 。但是，对于 Sass 用户来说，立即查看错误比让它们传递到 CSS 输出更有用。
 
-可以通过特定实现的 APIs 访问解析错误的位置。例如，在 Dart Sass 中，您可以访问 SassException.span，在 Node Sass 和 Dart Sass 的 JS API 中，您可以访问 file、line 和 column 属性。
+可以通过特定实现的 APIs 访问解析错误的位置。例如，在 Dart Sass 中，您可以访问 SassException.span，在 Node Sass 和 Dart Sass 的 JS API 中，您可以访问 [file、line 和 column 属性](https://github.com/sass/node-sass#error-object)。

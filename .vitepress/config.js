@@ -108,7 +108,7 @@ export default defineConfig({
             },
             {
               text: "样式表结构-Structure of a Stylesheet",
-              link: "/sass/syntax/Structure",
+              link: "/sass/syntax/structure",
             },
             {
               text: "注释-Comments",
