@@ -32,10 +32,10 @@ export default defineConfig({
         link: "/javascript/syntax/data-structures",
         activeMatch: "/javascript",
       },
+      { text: "Sass", link: "/sass/syntax/", activeMatch: "/sass/" },
       { text: "Vue", link: "/vue/vue2/vuejs", activeMatch: "/vue/" },
       { text: "HTML", link: "/html/", activeMatch: "/html/" },
       { text: "CSS", link: "/css/", activeMatch: "/css/" },
-      { text: "Sass", link: "/sass/", activeMatch: "/sass/" },
       { text: "Browser", link: "/browser/", activeMatch: "/browser/" },
       { text: "HTTP", link: "/web-http/", activeMatch: "/web-http/" },
     ],
@@ -90,6 +90,247 @@ export default defineConfig({
         {
           text: "CSS",
           items: [{ text: "基础", link: "/css/" }],
+        },
+      ],
+
+      "/sass/": [
+        {
+          text: "语法-Syntax",
+          collapsed: false,
+          items: [
+            {
+              text: "概述-Overview",
+              link: "/sass/syntax/",
+            },
+            {
+              text: "样式表解析-Parsing a Stylesheet",
+              link: "/sass/syntax/parsing",
+            },
+            {
+              text: "样式表结构-Structure of a Stylesheet",
+              link: "/sass/syntax/Structure",
+            },
+            {
+              text: "注释-Comments",
+              link: "/sass/syntax/comments",
+            },
+            {
+              text: "特别函数-Special Functions",
+              link: "/sass/syntax/special-functions",
+            },
+          ],
+        },
+        {
+          text: "样式规则-Style Rules",
+          collapsed: false,
+          items: [
+            {
+              text: "概述-Overview",
+              link: "/sass/rules/",
+            },
+            {
+              text: "属性声明-Property Declarations",
+              link: "/sass/rules/declarations",
+            },
+            {
+              text: "父选择器-Parent Selector",
+              link: "/sass/rules/parent-selector",
+            },
+            {
+              text: "占位符选择器-Placeholder Selector",
+              link: "/sass/rules/placeholder-selector",
+            },
+          ],
+        },
+        {
+          text: "变量-Variable",
+          link: "/sass/variables",
+        },
+        {
+          text: "插值-Interpolation",
+          link: "/sass/interpolation",
+        },
+        {
+          text: "@规则-At-rules",
+          collapsed: false,
+          items: [
+            {
+              text: "概述-Overview",
+              link: "/sass/at-rules/",
+            },
+            {
+              text: "@use",
+              link: "/sass/at-rules/use",
+            },
+            {
+              text: "@forward",
+              link: "/sass/at-rules/forward",
+            },
+            {
+              text: "@import",
+              link: "/sass/at-rules/import",
+            },
+            {
+              text: "@mixin and @include",
+              link: "/sass/at-rules/mixin",
+            },
+            {
+              text: "@extend",
+              link: "/sass/at-rules/extend",
+            },
+            {
+              text: "@error",
+              link: "/sass/at-rules/error",
+            },
+            {
+              text: "@warn",
+              link: "/sass/at-rules/warn",
+            },
+            {
+              text: "@debug",
+              link: "/sass/at-rules/debug",
+            },
+            {
+              text: "@at-root",
+              link: "/sass/at-rules/at-root",
+            },
+            {
+              text: "流量控制-Flow Control",
+              collapsed: false,
+              items: [
+                {
+                  text: "概述-Overview",
+                  link: "/sass/at-rules/control",
+                },
+                {
+                  text: "@if and @else",
+                  link: "/sass/at-rules/control/if",
+                },
+                {
+                  text: "@each",
+                  link: "/sass/at-rules/control/each",
+                },
+                {
+                  text: "@for",
+                  link: "/sass/at-rules/control/for",
+                },
+                {
+                  text: "@while",
+                  link: "/sass/at-rules/control/while",
+                },
+              ],
+            },
+            {
+              text: "css @规则-From CSS",
+              link: "/sass/at-rules/css",
+            },
+          ],
+        },
+        {
+          text: "值-Values",
+          collapsed: false,
+          items: [
+            {
+              text: "概述-Overview",
+              link: "/sass/values/",
+            },
+            {
+              text: "Numbers",
+              link: "/sass/values/numbers",
+            },
+            {
+              text: "Colors",
+              link: "/sass/values/strings",
+            },
+            {
+              text: "Lists",
+              link: "/sass/values/lists",
+            },
+            {
+              text: "Maps",
+              link: "/sass/values/maps",
+            },
+            {
+              text: "Booleans",
+              link: "/sass/values/booleans",
+            },
+            {
+              text: "null",
+              link: "/sass/values/null",
+            },
+            {
+              text: "Calculations",
+              link: "/sass/values/calculations",
+            },
+            {
+              text: "Functions",
+              link: "/sass/values/functions",
+            },
+          ],
+        },
+        {
+          text: "操作符-Operators",
+          collapsed: false,
+          items: [
+            {
+              text: "概述-Overview",
+              link: "/sass/operators/",
+            },
+            {
+              text: "Equality",
+              link: "/sass/operators/equality",
+            },
+            {
+              text: "Relational",
+              link: "/sass/operators/relational",
+            },
+            {
+              text: "Numeric",
+              link: "/sass/operators/numeric",
+            },
+            {
+              text: "String",
+              link: "/sass/operators/string",
+            },
+            {
+              text: "Boolean",
+              link: "/sass/operators/boolean",
+            },
+          ],
+        },
+        {
+          text: "内置模块-Built-In Modules",
+          collapsed: false,
+          items: [
+            {
+              text: "概述-Overview",
+              link: "/sass/modules/",
+            },
+            {
+              text: "sass:color",
+              link: "/sass/modules/color",
+            },
+            {
+              text: "sass:list",
+              link: "/sass/modules/list",
+            },
+            {
+              text: "sass:map",
+              link: "/sass/modules/map",
+            },
+            {
+              text: "sass:meta",
+              link: "/sass/modules/meta",
+            },
+            {
+              text: "sass:selector",
+              link: "/sass/modules/selector",
+            },
+            {
+              text: "sass:string",
+              link: "/sass/modules/string",
+            },
+          ],
         },
       ],
 
