@@ -175,6 +175,10 @@ export default defineConfig({
               link: "/sass/at-rules/mixin",
             },
             {
+              text: "@function",
+              link: "/sass/at-rules/function",
+            },
+            {
               text: "@extend",
               link: "/sass/at-rules/extend",
             },
