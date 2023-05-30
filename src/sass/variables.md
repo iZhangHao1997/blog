@@ -115,7 +115,7 @@ code {
 
 ## 内置模块
 
-定义在[内置模块](./modules/index.md)里的变量不能被修改。
+定义在[内置模块](./modules/)里的变量不能被修改。
 
 ```scss
 @use "sass:math" as math;
