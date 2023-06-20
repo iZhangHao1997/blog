@@ -204,7 +204,7 @@ export default defineConfig({
               items: [
                 {
                   text: "概述-Overview",
-                  link: "/sass/at-rules/control",
+                  link: "/sass/at-rules/control/",
                 },
                 {
                   text: "@if and @else",
