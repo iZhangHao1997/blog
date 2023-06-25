@@ -248,7 +248,7 @@ export default defineConfig({
             },
             {
               text: "Colors",
-              link: "/sass/values/strings",
+              link: "/sass/values/colors",
             },
             {
               text: "Lists",
