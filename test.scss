@@ -1,0 +1,8 @@
+@debug "Helvetica Neue"; // "Helvetica Neue"
+@debug "C:\\Program Files"; // "C:\\Program Files"
+@debug '"Don\'t Fear the Reaper"'; // "\"Don't Fear the Reaper\""
+@debug "line1\a line2"; // "line1\a line2"
+
+$roboto-variant: "Mono";
+@debug "Roboto #{$roboto-variant}"; // "Roboto Mono"
+@debug "C:\\\\Program Files";

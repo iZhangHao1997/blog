@@ -243,6 +243,10 @@ export default defineConfig({
               link: "/sass/values/numbers",
             },
             {
+              text: "Strings",
+              link: "/sass/values/strings",
+            },
+            {
               text: "Colors",
               link: "/sass/values/strings",
             },
