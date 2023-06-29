@@ -8,7 +8,7 @@ url() 函数在 CSS 中很常用，但是它的语法和其他函数不同：它
 
 如果 url() 函数的参数是一个不带引号的 URL，Sass 会按原样解析它，尽管可以使用插值来注入 SassCript 值。如果参数不是一个有效的的不带引号的 URL——例如，如果它包含变量或者函数调用——他将被解析为正常的原生 CSS 函数调用。
 
-scss 代码：
+:::code-group
 
 ```scss
 $roboto-font-path: "../fonts/roboto";
@@ -39,8 +39,6 @@ $roboto-font-path: "../fonts/roboto";
 }
 ```
 
-编译后生成的 css 代码：
-
 ```css
 @font-face {
   src: url("../fonts/roboto/Roboto-Thin.woff2") format("woff2");
@@ -58,6 +56,8 @@ $roboto-font-path: "../fonts/roboto";
   font-weight: 400;
 }
 ```
+
+:::
 
 ## element(), progid: ...(), and expression()
 
@@ -87,7 +87,7 @@ expression() 和其他以 progid: 开头的函数：是使用非标准语法的�
 
 Sass 在这些函数调用里面允许任何文本，包括嵌套括号。没有任何东西被解释为 SassScript 表达式，除了可以使用插值来注入动态值。
 
-例 sass 代码如下：
+:::code-group
 
 ```scss
 $logo-element: logo-bg;
@@ -97,10 +97,10 @@ $logo-element: logo-bg;
 }
 ```
 
-生成的 css 代码：
-
 ```css
 .logo {
   background: element(#logo-bg);
 }
 ```
+
+:::

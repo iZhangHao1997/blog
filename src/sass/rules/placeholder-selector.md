@@ -4,6 +4,8 @@ Sass 有一特别的选择器，称为”占位符“。它看起来和行为很
 
 例如：
 
+:::code-group
+
 ```scss
 .alert:hover,
 %strong-alert {
@@ -15,17 +17,18 @@ Sass 有一特别的选择器，称为”占位符“。它看起来和行为很
 }
 ```
 
-输出的 CSS 的代码：
-
 ```css
 .alert:hover {
   font-weight: bold;
 }
 ```
 
+:::
+
 这种选择器有什么用？它仍然可以 [extended](../at-rules/extend)。与类选择器不同，如果占位符没有被 `extended` ，占位符不会使 CSS 混乱，并且它们不会强制库的用户为他们的 HTML 使用特定的类名。
 
 例如：
+:::code-group
 
 ```scss
 %toolbelt {
@@ -50,8 +53,6 @@ Sass 有一特别的选择器，称为”占位符“。它看起来和行为很
 }
 ```
 
-生成的 CSS 代码：
-
 ```css
 .action-buttons,
 .reset-buttons {
@@ -73,5 +74,7 @@ Sass 有一特别的选择器，称为”占位符“。它看起来和行为很
   color: #cddc39;
 }
 ```
+
+:::
 
 占位符选择器在编写可能会或可能不会使用每个样式规则的 Sass 库时很有用。根据经验，如果您只是为自己的应用程序编写样式表，那么最好只扩展一个可用的类选择器。

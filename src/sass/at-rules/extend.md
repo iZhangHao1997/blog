@@ -19,6 +19,8 @@
 
 Sass 的 @extend 规则可以解决这个问题。它的语法为 `@extend <selector>`，这告诉了 sass 这个选择器要包含另一个选择器的样式。如下 scss 代码：
 
+:::code-group
+
 ```scss
 .error {
   border: 1px #f00;
@@ -30,8 +32,6 @@ Sass 的 @extend 规则可以解决这个问题。它的语法为 `@extend <sele
   }
 }
 ```
-
-对应的 css 代码：
 
 ```css
 .error,
@@ -45,11 +45,15 @@ Sass 的 @extend 规则可以解决这个问题。它的语法为 `@extend <sele
 }
 ```
 
+:::
+
 当一个 class 继承另一个 class，Sass 会为所有匹配继承 class 的元素设置样式，就好像它们也匹配被继承的 class 一样。当一个 class 继承另一个 class，它工作起来就像你将被继承的类添加到 HTML 中已经具有继承类的每个元素一样。你可以只写 `class="error--serious"`，Sass 会确保它的样式就像它和 `class="error"` 一样。
 
 当然，选择器不仅仅在样式规则中使用。Sass 知道在使用选择器的任何地方进行继承。这确保你的元素的样式与被继承选择器完全匹配。
 
 （个人觉得通过文字描述 extend 非常难理解，一些理论逻辑也很拗口，其实看代码就很容易明白。。。）
+
+:::code-group
 
 ```scss
 .error:hover {
@@ -62,8 +66,6 @@ Sass 的 @extend 规则可以解决这个问题。它的语法为 `@extend <sele
 }
 ```
 
-对应的 css 代码：
-
 ```css
 .error:hover,
 .error--serious {
@@ -74,6 +76,8 @@ Sass 的 @extend 规则可以解决这个问题。它的语法为 `@extend <sele
   border-width: 3px;
 }
 ```
+
+:::
 
 :::danger 注意
 extend 在你的样式表其他部分被编译之后才会被解析。特别地，它解析发生父选择器被解析之后。这意味着如果你 `@extend .error`，这将不会影响里面的选择器 `.error { &__icon { ... } }`。这也意味着父选择器看不见继承的样式结果。
@@ -88,6 +92,8 @@ extend 在你的样式表其他部分被编译之后才会被解析。特别地�
 - 它尽可能地修剪冗余选择器，同时仍然确保特异性大于或等于继承者的特异性。
 - 它知道一个选择器何时匹配另一个选择器所做的一切，并且可以将它们组合在一起。
 - 它智能地处理组合器、通用选择器和包含选择器的伪类。
+
+:::code-group
 
 ```scss
 .content nav.sidebar {
@@ -111,8 +117,6 @@ main.content .info {
 }
 ```
 
-对应生成的 css 代码：
-
 ```css
 p.info {
   background-color: #dee9fc;
@@ -131,6 +135,8 @@ main.content nav.sidebar {
 }
 ```
 
+:::
+
 :::info 有趣的事实：
 你可以使用选择器功能直接访问 Sass 的智能统一！该 `selector.unify()` 函数返回一个与两个选择器的交集相匹配的选择器，而该 `selector.extend()` 函数的工作方式与 @extend 类似，但在单个选择器上。
 :::
@@ -145,6 +151,8 @@ main.content nav.sidebar {
 
 有时你只想写一个被用于继承的样式规则，而不想作为 css 输出，可以使用占位符选择器，以 `%` 开头。
 
+:::code-group
+
 ```scss
 .alert:hover,
 %strong-alert {
@@ -156,13 +164,13 @@ main.content nav.sidebar {
 }
 ```
 
-生成的 css 代码：
-
 ```css
 .alert:hover {
   font-weight: bold;
 }
 ```
+
+:::
 
 ### 私有占位符
 

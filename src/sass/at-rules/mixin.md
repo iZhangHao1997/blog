@@ -4,7 +4,9 @@ Mixins 允许你定义可以在样式表中重复使用的样式。这可以很�
 
 Mixins 的定义语法为：`@mixin <name> { ... }` 或者 `@mixin <name>(<arguments...>) { ... }`。Mixin 的名称可以是任何 Sass 标志符，并且他可以包含除顶层语句之外的任何表达式。它们可用于封装可放入单个样式规则中的样式；它们可以包含自己的样式规则，这些规则可以嵌套在其他规则中或包含在样式表的顶层；或者它们只能用于修改变量。
 
-Mixins 可以使用 @include 引入，语法为 `@include <name>` 或者 `@include <name>(<arguments...>)`。如下 scss 代码：
+Mixins 可以使用 @include 引入，语法为 `@include <name>` 或者 `@include <name>(<arguments...>)`。如下代码：
+
+:::code-group
 
 ```scss
 @mixin reset-list {
@@ -30,8 +32,6 @@ nav ul {
 }
 ```
 
-对应的 css 代码为：
-
 ```css
 nav ul {
   margin: 0;
@@ -48,6 +48,8 @@ nav ul li {
 }
 ```
 
+:::
+
 :::info 有趣的事实：
 Sass 变量和所有 Sass 标志符一样，将连字符和下划线视为相同。这意味着 `reset-list` 和 `reset_list` 都指向相同的 mixin。这是 Sass 早期的历史遗留问题，当时 Sass 只允许在标志符名称中使用下划线。一旦 Sass 新增了连字符以匹配 CSS 语法的支持，这两者就等同了来使迁移更加容易。
 :::
@@ -55,6 +57,8 @@ Sass 变量和所有 Sass 标志符一样，将连字符和下划线视为相同
 ## 参数
 
 Mixin 可以携带参数，这允许他们每次调用的时候都有自定义行为。在 @mixin 规则中，参数被指定在 mixin 名称的后面，用圆括号包围的一个列表。mixins 必须在被 include 的时候提供相同数量的给定参数。这些表达式的值在 mixin 的主体中作为相应的变量可用。
+
+:::code-group
 
 ```scss
 @mixin rtl($property, $ltr-value, $rtl-value) {
@@ -70,8 +74,6 @@ Mixin 可以携带参数，这允许他们每次调用的时候都有自定义�
 }
 ```
 
-生成对应的 CSS 代码：
-
 ```css
 .sidebar {
   float: left;
@@ -81,9 +83,13 @@ Mixin 可以携带参数，这允许他们每次调用的时候都有自定义�
 }
 ```
 
+:::
+
 ### 可选参数
 
 通常 mixin 中声明的每个参数都必须有传值当被 include 的时候。然后你可以通过定义一个默认值生成一个可选参数，如果用户没有传参，默认值将被使用。默认值使用和变量声明一样的语法：一个变量名，后面一个冒号和 SassScript 表达式。这使定义可扩展的 mixin API 非常简单。示例代码如下：
+
+:::code-group
 
 ```scss
 @mixin replace-text($image, $x: 50%, $y: 50%) {
@@ -103,8 +109,6 @@ Mixin 可以携带参数，这允许他们每次调用的时候都有自定义�
 }
 ```
 
-生成的 css 代码为：
-
 ```css
 .mail-icon {
   text-indent: -99999em;
@@ -116,13 +120,17 @@ Mixin 可以携带参数，这允许他们每次调用的时候都有自定义�
 }
 ```
 
+:::
+
 :::info 有趣的事实：
 默认值可以是任何 Sass 表达式，并且可以引用更早的参数。
 :::
 
 ### 关键字参数
 
-当 mixin 被 include 时，参数在按参数列表传递的同时还可以按变量名称传参（变量名参数必须在参数列表(positional arguments)后面）。这对有可选参数或者意义不明显布尔类型参数时特别有用。关键字参数和变量声明与可选参数的语法一样。如下 scss 代码示例：
+当 mixin 被 include 时，参数在按参数列表传递的同时还可以按变量名称传参（变量名参数必须在参数列表(positional arguments)后面）。这对有可选参数或者意义不明显布尔类型参数时特别有用。关键字参数和变量声明与可选参数的语法一样。如下代码示例：
+
+:::code-group
 
 ```scss
 @mixin square($size, $color: red, $radius: 0) {
@@ -140,8 +148,6 @@ Mixin 可以携带参数，这允许他们每次调用的时候都有自定义�
 }
 ```
 
-那么生成的 css 代码为：
-
 ```css
 .avatar {
   width: 100px;
@@ -151,6 +157,7 @@ Mixin 可以携带参数，这允许他们每次调用的时候都有自定义�
 }
 ```
 
+:::
 :::danger 注意！
 因为任何参数都可以通过名称传递，所以在重命名 mixin 的参数名称时要特别小心...这可能会使你的用户崩溃。将旧名称的参数作为可选参数并保持一段时间，如果有人传递旧名称，打印一个警告告知用户，让他们知道要迁移到新参数。
 :::
@@ -158,6 +165,8 @@ Mixin 可以携带参数，这允许他们每次调用的时候都有自定义�
 ### 任意数量参数
 
 如果一个 mixin 可以传递任何数量的参数也是有用的。如果 @mixin 的最后一个参数声明以 `...` 结尾，那么使用这个 mixin 时所有的额外参数都会作为一个 list 传递给最后一个参数。这就是一个参数 list。如以下代码：
+
+:::code-group
 
 ```scss
 @mixin order($height, $selectors...) {
@@ -172,8 +181,6 @@ Mixin 可以携带参数，这允许他们每次调用的时候都有自定义�
 
 @include order(150px, "input.name", "input.address", "input.zip");
 ```
-
-生成的 css 代码如下：
 
 ```css
 input.name {
@@ -195,9 +202,13 @@ input.zip {
 }
 ```
 
+:::
+
 ### 采用任意关键字参数
 
-参数列表也可以用任意关键字参数。`meta.keywords()` 函数传入一个参数列表然后返回作为从参数名称（不包括 `$`）到这些参数值的映射传递给混入的任何额外关键字。如 scss 代码：
+参数列表也可以用任意关键字参数。`meta.keywords()` 函数传入一个参数列表然后返回作为从参数名称（不包括 `$`）到这些参数值的映射传递给混入的任何额外关键字。如代码：
+
+:::code-group
 
 ```scss
 @use "sass:meta";
@@ -216,8 +227,6 @@ input.zip {
 @include syntax-colors($string: #080, $comment: #800, $variable: #60b);
 ```
 
-那么生成的 css 代码为：
-
 ```css
 pre span.stx-string {
   color: #080;
@@ -231,6 +240,8 @@ pre span.stx-variable {
   color: #60b;
 }
 ```
+
+:::
 
 :::info 有趣的事实：
 如果您从未将参数列表传递给函数 `meta.keywords()`，则该参数列表将不允许额外的关键字参数。这有助于你的 mixin 的调用者确保他们没有不小心拼错任何参数名称。
@@ -262,6 +273,8 @@ $form-selectors: "input.name", "input.address", "input.zip" !default;
 
 除了接受参数之外，mixin 还可以接受整个样式块，称为内容块。mixin 可以在它内容内使用 `@content` 来接受 include 时所接受的内容块。内容块传递的时候以花括号的形式，和其他 Sass 里的块内容一样，在使用 `@content` 规则的地方被注入。例如：
 
+:::code-group
+
 ```scss
 @mixin hover {
   &:not([disabled]):hover {
@@ -277,8 +290,6 @@ $form-selectors: "input.name", "input.address", "input.zip" !default;
 }
 ```
 
-对应的 css 代码为：
-
 ```css
 .button {
   border: 1px solid black;
@@ -288,6 +299,8 @@ $form-selectors: "input.name", "input.address", "input.zip" !default;
   border-width: 2px;
 }
 ```
+
+:::
 
 :::info 有趣的事实：
 一个 mixin 可以 include 多个 @content。如果使用了多个 @content，内容块将会被分别 included 在每个使用 @content 的地方。
@@ -315,6 +328,8 @@ mixin 可以通过 `@content(<arguments...>)` 语法传递参数给内容块。�
 
 传递参数给内容块的 scss 例子：
 
+:::code-group
+
 ```scss
 @mixin media($types...) {
   @each $type in $types {
@@ -334,8 +349,6 @@ mixin 可以通过 `@content(<arguments...>)` 语法传递参数给内容块。�
 }
 ```
 
-对应生成的 css 代码：
-
 ```css
 @media screen {
   h1 {
@@ -351,9 +364,13 @@ mixin 可以通过 `@content(<arguments...>)` 语法传递参数给内容块。�
 }
 ```
 
+:::
+
 ## 缩进 mixin 语法
 
 缩进语法除了标准的 @mixin 和 @include 之外，对定义和使用 mixins 有特别的语法。使用符号 `=` 也可以定义 mixins，并且可以使用 `+` 来 include。尽管这是很简短的语法，但是很难通过瞥一眼就明白所表达的意思，所以 Sass 不鼓励用户去使用这种语法。这是一个使用的例子：
+
+:::code-group
 
 ```sass
 =reset-list
@@ -374,8 +391,6 @@ nav ul
   +horizontal-list
 ```
 
-转化为 css 代码为：
-
 ```css
 nav ul {
   margin: 0;
@@ -389,3 +404,5 @@ nav ul li {
   margin-right: 2em;
 }
 ```
+
+:::

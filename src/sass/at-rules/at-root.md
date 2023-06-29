@@ -6,6 +6,8 @@
 
 注：`selector.unify()` 函数返回匹配参数中所有选择器的组合选择器，如 `selector.unify("a.disabled", "a.outgoing")` 返回 `a.disabled.outgoing`。
 
+:::code-group
+
 ```scss
 @use "sass:selector";
 
@@ -25,8 +27,6 @@
 }
 ```
 
-生成的 css 代码为：
-
 ```css
 .wrapper input.field {
   /* ... */
@@ -36,6 +36,8 @@
   /* ... */
 }
 ```
+
+:::
 
 @at-root 规则在这里是必须的，因为 Sass 不知道执行选择器嵌套时不知道使用什么插值来生成选择器。这意味着它会自动将外部选择器添加到内部选择器，即使使用 & 作 SassScript 表达式也是如此。@at-root 明确告诉 Sass 不要包含外部选择器。也就是说，如果这里不添加 @at-root 规则，将会生成如下 css 代码：
 
@@ -56,6 +58,8 @@
 
 就 @at-root 规则而言，它会摆脱样式规则的束缚。任何@规则，如 @media 或者 @supports 都会被留着。如果你不想这样，你可以通过编写 `@at-root (with: <rules...>) { ... }` 或者 `@at-root (<without: <rules...>) { ... }` 语法来精确地控制什么规则应该被包含或者排除之外。`(without: ...)` 语句告诉 Sass 哪些规则应该被排除在外；`(with: ...)` 语句将排除所有的规则除了被列出来的这些。如下 scss 代码：
 
+:::code-group
+
 ```scss
 @media print {
   .page {
@@ -72,8 +76,6 @@
 }
 ```
 
-生成的 css 代码为：
-
 ```css
 @media print {
   .page {
@@ -89,6 +91,8 @@
   font-size: 1.2em;
 }
 ```
+
+:::
 
 除了@规则的名称外，还有两个特殊值可用于 with/without 的关键字里：
 

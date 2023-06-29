@@ -2,6 +2,8 @@
 
 `@while` 规则，语法为 `@while <expression> { ... }`，遍历它的内容块如果 `expression` 表达式的返回值为 `true`，循环直到表达式返回 `false`。
 
+:::code-group
+
 ```scss
 @use "sass:math";
 
@@ -19,13 +21,13 @@ sup {
 }
 ```
 
-对应生成的 css 代码：
-
 ```css
 sup {
   font-size: 12.36094px;
 }
 ```
+
+:::
 
 :::danger 注意！
 尽管 `@while` 对于一些特别复杂的样式表来说是必要的，但是你最好还是使用 `@each` 或者 `for` 如果这两者可以满足你的需求。它们是更加清晰和易读的，并且编译起来更快。

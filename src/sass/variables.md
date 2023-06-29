@@ -4,7 +4,9 @@ Sass 变量是简单的：你可以赋值给一个 `$` 开头的名字，然后�
 
 一个变量声明看起来很像一个属性声明：写作 `<variable>: <expression>`。不像一个属性只能在样式规则或者@规则里声明，变量可以在任何你想要的地方声明。
 
-比如 scss 代码：
+比如代码：
+
+:::code-group
 
 ```scss
 $base-color: #c6538c;
@@ -15,13 +17,13 @@ $border-dark: rgba($base-color, 0.88);
 }
 ```
 
-生成的 css 代码：
-
 ```css
 .alert {
   border: 1px solid rgba(198, 83, 140, 0.88);
 }
 ```
+
+:::
 
 ::: danger 注意！
 CSS 有它自己的变量，CSS 变量和 Sass 变量完全不同。以下是不同点：
@@ -30,7 +32,9 @@ CSS 有它自己的变量，CSS 变量和 Sass 变量完全不同。以下是不
 - CSS 变量对于不同的元素有不同的值，但是 Sass 变量在一次只有一个值
 - Sass 变量是命令式的，这意味着如果你使用一个变量然后改变它的值，之前的使用将保持不变。Css 变量是声明式的，意味着如果你改变变量值，它会影响之前或者之后的使用。
 
-比如 SCSS 代码：
+比如代码：
+
+:::code-group
 
 ```scss
 $variable: value 1;
@@ -43,8 +47,6 @@ $variable: value 2;
   value: $variable;
 }
 ```
-
-生成的 CSS 代码：
 
 ```css
 .rule-1 {
@@ -84,8 +86,9 @@ Sass 变量和所有 Sass 标志符一样，将连字符和下划线视为相同
 
 例如：
 
-```scss
-// _library.scss
+:::code-group
+
+```scss [library.scss]
 $black: #000 !default;
 $border-radius: 0.25rem !default;
 $box-shadow: 0 0.5rem 1rem rgba($black, 0.15) !default;
@@ -96,15 +99,12 @@ code {
 }
 ```
 
-```scss
-// style.scss
+```scss [style.scss]
 @use "library" with (
   $black: #222,
   $border-radius: 0.1rem
 );
 ```
-
-在 style.scss 文件中生成的 CSS 代码：
 
 ```css
 code {
@@ -112,6 +112,8 @@ code {
   box-shadow: 0 0.5rem 1rem rgba(#222, 0.15);
 }
 ```
+
+:::
 
 ## 内置模块
 
@@ -130,6 +132,8 @@ math.$pi: 0;
 
 例如 scss 代码：
 
+:::code-group
+
 ```scss
 $global-variable: global value;
 
@@ -147,8 +151,6 @@ $global-variable: global value;
 }
 ```
 
-css 代码如下：
-
 ```css
 .content {
   global: global value;
@@ -160,9 +162,13 @@ css 代码如下：
 }
 ```
 
+:::
+
 ### 阴影（不知道翻译有无问题，原文：Shadowing）
 
 局部变量甚至可以和全局变量使用相同的名字。如果这发生了，这实际上有两个不同的变量使用同一个名字：一个是局部的一个是全局的。这有助于确保编写局部变量的作者不会意外更改他们甚至不知道的全局变量的值。
+
+:::code-group
 
 ```scss
 $variable: global value;
@@ -177,8 +183,6 @@ $variable: global value;
 }
 ```
 
-生成的 CSS 代码如下：
-
 ```css
 .content {
   value: local value;
@@ -189,9 +193,13 @@ $variable: global value;
 }
 ```
 
+:::
+
 如果您需要在局部范围内（例如在 mixin 中）设置全局变量的值，则可以使用该 `!global` 标志符。带 `!global` 标记符的变量声明将始终分配给全局范围。
 
-例如 scss 代码：
+例如代码：
+
+:::code-group
 
 ```scss
 $variable: first global value;
@@ -216,6 +224,8 @@ $variable: first global value;
 }
 ```
 
+:::
+
 ::: danger 注意！
 兼容性：
 
@@ -233,6 +243,7 @@ $variable: first global value;
 在流量控制规则中声明的变量有特殊的作用域规则：它们不会隐藏与流量控制规则相同级别的变量。相反，他们只是分配给那些变量。这使得条件性地为变量赋值或在循环中构建值变得更加容易。
 
 比如 scss 代码如下：
+:::code-group
 
 ```scss
 $dark-theme: true !default;
@@ -251,8 +262,6 @@ $accent-color: #6a1b9a !default;
 }
 ```
 
-生成的 css 代码：
-
 ```css
 .button {
   background-color: #750c30;
@@ -260,6 +269,8 @@ $accent-color: #6a1b9a !default;
   border-radius: 3px;
 }
 ```
+
+:::
 
 ::: danger 注意！
 控制流中的变量可以赋值给已经存在于外层作用域的变量，但在流程控制范围内声明的新变量将无法在外部范围内访问。确保变量在赋值之前已经声明，即使您需要将其声明为 `null`。
@@ -272,7 +283,9 @@ Sass 核心库提供了一些处理变量的高级函数。`meta.variable-exists
 ::: danger 注意！
 用户偶尔会希望使用插值来根据另一个变量定义一个变量名。Sass 不允许这样做，因为它让人更难一眼看出哪些变量定义在哪里。不过，您可以做的是定义一个从名称到值的映射，然后您可以使用变量访问该映射。
 
-如 scss 代码：
+如代码：
+
+:::code-group
 
 ```scss
 @use "sass:map";
@@ -288,8 +301,6 @@ $theme-colors: (
   background-color: map.get($theme-colors, "warning");
 }
 ```
-
-生成的 css 代码：
 
 ```css
 .alert {

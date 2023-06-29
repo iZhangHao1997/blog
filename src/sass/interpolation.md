@@ -13,7 +13,9 @@
 - 原生 CSS 函数名称
 - loud 注释
 
-例如 scss 代码：
+例如代码：
+
+:::code-group
 
 ```scss
 @mixin corner-icon($name, $top-or-bottom, $left-or-right) {
@@ -28,8 +30,6 @@
 @include corner-icon("mail", top, left);
 ```
 
-对应的 CSS 代码如下：
-
 ```css
 .icon-mail {
   background-image: url("/icons/mail.svg");
@@ -38,6 +38,8 @@
   left: 0;
 }
 ```
+
+:::
 
 ## 在 SassScript 中
 
@@ -50,6 +52,8 @@
 LibSass 和 Ruby Sass 现在使用更旧的语法来解析插值在 SassScript 中。对于大多数实际用途，它工作起来是一样的，但是它可能表现的奇怪起来如果周围有操作符。更详细的内容请参考[这个文档](https://github.com/sass/sass/blob/main/accepted/free-interpolation.md#old-interpolation-rules)。
 
 可以在 SassScript 中使用插值将 SassScript 注入到未加引号的字符串中。这是非常有用的当动态生成名称（例如动画名称），或者使用斜杠分隔值。注意 SassScript 中的插值总是返回一个不带引号的字符串。
+
+:::code-group
 
 ```scss
 @mixin inline-animation($duration) {
@@ -76,8 +80,6 @@ LibSass 和 Ruby Sass 现在使用更旧的语法来解析插值在 SassScript �
 }
 ```
 
-对应的 CSS 代码：
-
 ```css
 .pulse {
   animation-name: inline-uhtghph2n;
@@ -93,6 +95,8 @@ LibSass 和 Ruby Sass 现在使用更旧的语法来解析插值在 SassScript �
   }
 }
 ```
+
+:::
 
 ::: info 有趣的事实：
 插值对于将值注入字符串很有用，但除此之外，它在 SassScript 表达式中很少需要。你绝对不需要它来仅在属性值中使用变量。不用写 `color: #{$accent}`，你可以直接写 `color: $accent`！

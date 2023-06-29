@@ -2,6 +2,8 @@
 
 `@if` 规则的语法为 `@if <expression> { ... }`，它控制样式块内的内容是否被编译为 css。`expression` 表达式通常返回 `true` 或者 `false` 中的一个，如果返回 `true`，样式快将被编译，如果表达式返回 `false` 则不会。如下 scss 代码：
 
+:::code-group
+
 ```scss
 @mixin avatar($size, $circle: false) {
   width: $size;
@@ -20,8 +22,6 @@
 }
 ```
 
-对应的 css 代码为：
-
 ```css
 .square-av {
   width: 100px;
@@ -35,9 +35,13 @@
 }
 ```
 
+:::
+
 ## @else 规则
 
 一个 `@if` 规则可以可选地跟 `@else` 规则，写作 `@else { ... }`。很好理解，和编程里的 if else 一样。如下 scss 代码：
+
+:::code-group
 
 ```scss
 $light-background: #f2ece4;
@@ -74,6 +78,8 @@ body.dark .banner {
 }
 ```
 
+:::
+
 条件表达式可以包含[boolean 运算符](../../operators/boolean.md)（and、or、not）。
 
 ## @else if 规则
@@ -81,6 +87,8 @@ body.dark .banner {
 同样可以通过 `@else if` 规则控制 else 里面的样式是否被生效，语法为 `@else if (<expression>) { ... }`。只有当 `@if` 条件表达式返回 false 并且 `@else if` 条件表达式返回 true，样式块内的规则才会生效。
 
 事实上，也可以在 `@if` 之后链式调用多个 `@else if`。样式块的内容直到遇到条件表达式为 true 才会生效。如果在条件链的最后有 `@else`，并且前面的条件表达式都返回 false，则最后一个样式块生效。如下 scss 代码：
+
+:::code-group
 
 ```scss
 @use "sass:math";
@@ -111,8 +119,6 @@ body.dark .banner {
 }
 ```
 
-对应的 css 代码为：
-
 ```css
 .next {
   height: 0;
@@ -124,6 +130,8 @@ body.dark .banner {
   border-left-color: black;
 }
 ```
+
+:::
 
 ## 真值和假值
 

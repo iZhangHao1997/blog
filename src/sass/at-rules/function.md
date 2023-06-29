@@ -4,6 +4,8 @@
 
 函数通用使用 `@function` 规则定义，语法为：`@function <name>(<arguments...>)`。函数的名字可以是任何标志符。它只可以包含[通用语句](../syntax/structure#通用语句)，以及指示要用作函数调用结果的值的 [`@return` 规则](#return)。函数调用的语法和普通 CSS 函数一样。以下是示例代码：
 
+:::code-group
+
 ```scss
 @function pow($base, $exponent) {
   $result: 1;
@@ -19,14 +21,14 @@
 }
 ```
 
-对应的 css 代码为：
-
 ```css
 .sidebar {
   float: left;
   margin-left: 64px;
 }
 ```
+
+:::
 
 :::info 有趣的事实：
 函数名称，像所有 Sass 标志符，对连字符和下划线为同一个标志符。这意味着 `scale-color` 和 `scale_color` 都指向相同的函数。这是 Sass 早期的历史遗留问题，当时 Sass 只允许在标志符名称中使用下划线。一旦 Sass 新增了连字符以匹配 CSS 语法的支持，这两者就等同了来使迁移更加容易。
@@ -50,6 +52,8 @@
 
 通常地，当函数被调用时声明的参数必须要传递。然而，你可以通过定义一个默认值使参数是可选的，当不传递参数时使用默认值。默认值使用和变量声明一样的语法：一个变量名，后面一个冒号和 SassScript 表达式。这使定义可扩展的函数 API 非常简单。示例代码如下：
 
+:::code-group
+
 ```scss
 @function invert($color, $amount: 100%) {
   $inverse: change-color($color, $hue: hue($color) + 180);
@@ -62,14 +66,13 @@ $primary-color: #036;
 }
 ```
 
-相应的 css 代码为：
-
 ```css
 .header {
   background-color: #523314;
 }
 ```
 
+:::
 :::info 有趣的事实：
 默认值可以是任何 Sass 表达式，并且可以引用更早的参数。
 :::
@@ -77,6 +80,8 @@ $primary-color: #036;
 ### 关键字参数
 
 当 function 被 include 时，参数在按参数列表传递的同时还可以按变量名称传参（变量名参数必须在参数列表(positional arguments)后面）。这对有可选参数或者意义不明显布尔类型参数时特别有用。关键字参数和变量声明与可选参数的语法一样。如下 scss 代码示例：
+
+:::code-group
 
 ```scss
 $primary-color: #036;
@@ -86,14 +91,14 @@ $primary-color: #036;
 }
 ```
 
-对应的 css 代码如下：
-
 ```css
 .banner {
   background-color: #036;
   color: #0a85ff;
 }
 ```
+
+:::
 
 :::danger 注意！
 因为任何参数都可以通过名称传递，所以在重命名 function 的参数名称时要特别小心...这可能会使你的用户崩溃。将旧名称的参数作为可选参数并保持一段时间，如果有人传递旧名称，打印一个警告告知用户，让他们知道要迁移到新参数。
@@ -102,6 +107,8 @@ $primary-color: #036;
 ### 采用任意参数
 
 如果一个函数可以传递任何数量的参数也是有用的。如果 @function 的最后一个参数声明以 `...` 结尾，那么使用这个函数时所有的额外参数都会作为一个 list 传递给最后一个参数。这就是一个参数 list。如以下代码：
+
+:::code-group
 
 ```scss
 @function sum($numbers...) {
@@ -117,13 +124,13 @@ $primary-color: #036;
 }
 ```
 
-那么对应的 css 代码为：
-
 ```css
 .micro {
   width: 180px;
 }
 ```
+
+:::
 
 ### 采用任意关键字参数
 
@@ -153,6 +160,8 @@ $primary-color: #036;
 
 就像参数列表允许 mixin 接受任意位置或者关键字参数一样，相同的语法可用于将位置和关键字参数传递给 function。如果你调用函数时最后一个参数用 `...` 传递一个列表，列表的元素将会被当做额外的位置参数。相似的，一个 map 映射后面如果跟着 `...`，会被当做额外的关键字参数。你可以一次性全部传递。如下 scss 代码：
 
+:::code-group
+
 ```scss
 $widths: 50px, 30px, 100px;
 .micro {
@@ -160,13 +169,13 @@ $widths: 50px, 30px, 100px;
 }
 ```
 
-对应的 css 代码：
-
 ```css
 .micro {
   width: 30px;
 }
 ```
+
+:::
 
 :::info 有趣的事实：
 因为参数列表将会对位置参数和关键字参数都保持追踪，所以你可以一次性将参数传递给另一个函数。这使得对函数定义一个别名非常容易。以下是使用参数列表追踪的代码例子：

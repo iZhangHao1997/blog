@@ -2,7 +2,9 @@
 
 在 Sass 中和 CSS 一样，属性声明定义了如何设置与选择器匹配的元素的样式。但是 Sass 新增额外的特性来使这更加容易编写和更加自动化。首先，声明的值可以是任何 SassScript 表达式，它将被计算和包含在结果中。
 
-例如 Sass 代码：
+例如代码：
+
+:::code-group
 
 ```scss
 .circle {
@@ -13,8 +15,6 @@
 }
 ```
 
-生成的 css 代码如下：
-
 ```css
 .circle {
   width: 100px;
@@ -23,11 +23,15 @@
 }
 ```
 
+:::
+
 ## 插值
 
 一个属性的名字可以包含插值，插值可以让需要动态生成属性值成为可能。你可以甚至使用插值在整个属性名字中。
 
-如 sass 代码：
+如代码：
+
+:::code-group
 
 ```scss
 @mixin prefix($property, $value, $prefixes) {
@@ -42,8 +46,6 @@
 }
 ```
 
-生成的 css 代码如下：
-
 ```css
 .gray {
   -moz-filter: grayscale(50%);
@@ -52,11 +54,15 @@
 }
 ```
 
+:::
+
 ## 嵌套
 
 许多 CSS 属性以相同的前缀开头，充当一种命名空间。例如，`font-famliy`、`font-size` 和 `font-weight` 全部以 `font-` 开头。Sass 为了使这种情况更加简单并且减少冗余，允许嵌套的属性声明。外层属性名字可以被加在内层属性名字上，用连字符分隔。
 
 例如：
+
+:::code-group
 
 ```scss
 .enlarge {
@@ -73,8 +79,6 @@
 }
 ```
 
-生成的 css 代码如下：
-
 ```css
 .enlarge {
   font-size: 14px;
@@ -87,9 +91,12 @@
 }
 ```
 
+:::
 其中一些 CSS 属性具有使用命名空间作为属性名称的速记版本。对于这些，您可以编写速记值和更明确的嵌套版本。
 
 例如：
+
+:::code-group
 
 ```scss
 .info-page {
@@ -100,8 +107,6 @@
 }
 ```
 
-即：
-
 ```css
 .info-page {
   margin: auto;
@@ -110,11 +115,15 @@
 }
 ```
 
+:::
+
 ## 隐式声明
 
 有时你只想一个属性声明在某些情况展示。如果一个声明的值是 `null` 或者一个空的不带引号的字符串，Sass 根本不会将该声明编译成 CSS。
 
 例如：
+
+:::code-group
 
 ```scss
 $rounded-corners: false;
@@ -125,13 +134,13 @@ $rounded-corners: false;
 }
 ```
 
-即：
-
 ```css
 .button {
   border: 1px solid black;
 }
 ```
+
+:::
 
 ## 自定义属性
 
@@ -149,7 +158,9 @@ css 自定义属性，也称为 css 变量，有一个不常见的声明语法�
 
 因此，Sass 解析自定义属性声明和解析其他属性声明是不同的。所有标记，包括那些看起来像 SassScript 的标记，都按原样传递给 CSS 。**唯一的例外是插值，这是将动态值注入自定义属性的唯一方法。**
 
-如下 scss 代码：
+如下代码：
+
+:::code-group
 
 ```scss
 $primary: #81899b;
@@ -166,8 +177,6 @@ $warn: #dfa612;
 }
 ```
 
-生成的 CSS 代码如下：
-
 ```css
 :root {
   --primary: #81899b;
@@ -177,10 +186,14 @@ $warn: #dfa612;
 }
 ```
 
+:::
+
 ::: danger 注意！
 不幸的是，插值删除了字符串中的引号，这意味着很难去使用来自 SassScript 变量的带引号的字符串作为自定义属性的值。作为解决办法，你可以使用 `meta.inspect()` 函数来保持引号。
 
 例如：
+
+:::code-group
 
 ```scss
 @use "sass:meta";
@@ -193,8 +206,6 @@ $font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas;
   --font-family-monospace: #{meta.inspect($font-family-monospace)};
 }
 ```
-
-生成的 CSS 代码：
 
 ```css
 :root {
