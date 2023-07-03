@@ -285,23 +285,23 @@ export default defineConfig({
               link: "/sass/operators/",
             },
             {
-              text: "Equality",
+              text: "等式运算符-Equality",
               link: "/sass/operators/equality",
             },
             {
-              text: "Relational",
+              text: "关系运算符-Relational",
               link: "/sass/operators/relational",
             },
             {
-              text: "Numeric",
+              text: "数字运算符-Numeric",
               link: "/sass/operators/numeric",
             },
             {
-              text: "String",
+              text: "字符串运算符-String",
               link: "/sass/operators/string",
             },
             {
-              text: "Boolean",
+              text: "布尔运算符-Boolean",
               link: "/sass/operators/boolean",
             },
           ],
