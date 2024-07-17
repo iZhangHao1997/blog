@@ -36,7 +36,7 @@ adjust-color(...) //=> color
 adjust-hue($color, $degrees) //=> color
 ```
 
-提高或减少 `$color 的 hue (色相角)值。
+提高或减少 `$color` 的 hue (色相角)值。
 
 `$hue` 色相角必须是一个介于 `-360deg` 到 `360deg`(包含) 之间的值。它可以是无单位的但不能是除了 `deg` 之外的单位。
 
